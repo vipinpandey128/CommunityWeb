@@ -10,7 +10,7 @@ export class AdminLogoutComponent implements OnInit
 
     }
     ngOnInit() {
-        localStorage.removeItem('AdminUser');
+        localStorage.removeItem('UserDetails');
         this._Route.navigate(['Login']);
     }
 }

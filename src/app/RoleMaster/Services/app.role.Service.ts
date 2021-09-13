@@ -12,7 +12,7 @@ import{environment} from '../../../environments/environment';
 export class RoleService {
 
     private data: any;
-    private apiUrl = environment.apiEndpoint + "/api/CreateRole/";
+    private apiUrl = environment.apiEndpoint + "/api/Role/";
     token: any;
     username: any;
 

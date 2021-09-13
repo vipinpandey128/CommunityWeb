@@ -5,6 +5,7 @@ import {
   HttpResponse,
   HttpHandler,
   HttpEvent,
+  HttpHeaders,
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { LoaderService } from './services/loader.service';
@@ -14,8 +15,7 @@ import { LoaderService } from './services/loader.service';
 })
 export class LoaderInterceptorService implements HttpInterceptor {
   private requests: HttpRequest<any>[] = [];
-  private data: any;
-  token: any;
+  data: any;
   constructor(private loader: LoaderService) {}
 
   removeRequest(req: HttpRequest<any>) {
@@ -31,12 +31,19 @@ export class LoaderInterceptorService implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-
-    console.log("testing");
-    console.log(req);
+    let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    this.data = JSON.parse(localStorage.getItem('UserDetails'));
+    if(this.data==null)
+    {
+      
+    }
+    else{
+      headers = headers.append('Authorization', 'Bearer ' + `${this.data.token}`);
+      req = req.clone({headers});
+    }
     this.requests.push(req);
     this.loader.isLoading.next(true);
-    return Observable.create((observer) => {
+    return new Observable(((observer) => {
       const subscription = next.handle(req).subscribe((event) => {
         if (event instanceof HttpResponse) {
           this.removeRequest(req);
@@ -57,6 +64,6 @@ export class LoaderInterceptorService implements HttpInterceptor {
         this.removeRequest(req);
         subscription.unsubscribe();
       } 
-    });
+    }));
   }
 }

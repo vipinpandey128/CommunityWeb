@@ -16,24 +16,19 @@ export class LoginService {
     {
 
     }
-    private apiUrl = environment.apiEndpoint+"/api/Authenticate/";
+    private apiUrl = environment.apiEndpoint+"/api/Auth/Login/";
 
     public validateLoginUser(loginmodel: LoginModel)
     {
-        let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-        return this._http.post<LoginSuccessModel>(this.apiUrl, loginmodel, { headers: headers })
+        
+        return this._http.post<LoginSuccessModel>(this.apiUrl, loginmodel)
             .pipe(tap((data) =>
             {
-                if (data.token != null)
+                
+                if (data!= null)
                 {
-                    if (data.userType == 2) {
-                        
-                        // store username and jwt token in local storage to keep user logged in between page refreshes
-                        localStorage.setItem('currentUser', JSON.stringify({ username: loginmodel.Username, token: data.token }));
-                    }
-                    else if (data.userType == 1) {
-                        // store username and jwt token in local storage to keep user logged in between page refreshes
-                        localStorage.setItem('AdminUser', JSON.stringify({ username: loginmodel.Username, token: data.token }));
+                    if (data.token!=null) {
+                        localStorage.setItem('UserDetails', JSON.stringify({ username: loginmodel.Username, token: data.token, userType:data.userType }));
                     }
                     // return true to indicate successful login
                     return data;
@@ -47,7 +42,7 @@ export class LoginService {
     }
 
     LogoutUser() {
-        localStorage.removeItem('currentUser');
+        localStorage.removeItem('UserDetails');
     }
 
     private handleError(error: HttpErrorResponse) {

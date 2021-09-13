@@ -32,6 +32,7 @@ export class AllRoleComponent implements OnInit {
     ngOnInit(): void {
         this._roleService.GetAllRole().subscribe(
             allrole => {
+                console.log(allrole);
                 this.RoleList = allrole
                 this.dataSource = new MatTableDataSource(allrole);
                 this.dataSource.sort = this.sort;
