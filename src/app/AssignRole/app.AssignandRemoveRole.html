@@ -35,7 +35,7 @@
                 </div>
             </div>
             <div class="col-md-8">
-                <button type="submit" (click)="onSubmit('onAssign')" style="margin-top: 10px" [disabled]="!f.form.valid" class="btn btn-success">Assign Role</button>
+                <button type="submit" (click)="onSubmit('onAssign')" style="margin-top: 10px" [disabled]="!f.form.valid" mat-raised-button color="primary">Assign Role</button>
                 <button type="submit" (click)="onSubmit('onRemove')"  style="margin-left: 10px; margin-top: 10px" [disabled]="!f.form.valid" class="btn btn-success">Remove Role</button>
                 <a style="margin-left: 10px; margin-top:7px;" class="btn btn-info" [routerLink]="['/Assign/AllRole']">
                     All Assign Role </a>

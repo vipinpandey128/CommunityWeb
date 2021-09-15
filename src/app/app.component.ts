@@ -1,4 +1,5 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import { MatSidenav } from '@angular/material';
 import {delay} from 'rxjs/operators';
 import { LoaderService } from './services/loader.service';
 
@@ -6,12 +7,9 @@ import { LoaderService } from './services/loader.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./Content/vendor/bootstrap/css/bootstrap.min.css',
-              './Content/vendor/metisMenu/metisMenu.min.css',
-              './Content/dist/css/sb-admin-2.css',
-              './Content/vendor/font-awesome/css/font-awesome.min.css'
+  styleUrls: [
             ]
 })
-export class AppComponent {
-  title = 'Web Community';
+export class AppComponent{
+  title = 'Community Web';
 }

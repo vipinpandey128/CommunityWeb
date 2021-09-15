@@ -6,10 +6,7 @@ import { MatSnackBarVerticalPosition, MatSnackBarHorizontalPosition, MatSnackBar
 
 @Component({
     templateUrl: './app.login.html',
-    styleUrls: ['../Content/vendor/bootstrap/css/bootstrap.min.css',
-        '../Content/vendor/metisMenu/metisMenu.min.css',
-        '../Content/dist/css/sb-admin-2.css',
-        '../Content/vendor/font-awesome/css/font-awesome.min.css'
+    styleUrls: [
     ]
 })
 
@@ -53,7 +50,7 @@ export class LoginComponent implements OnInit
                     this._Route.navigate(['Login']);
                 }
 
-                if (response.userType == "Admin") 
+                if (response.token != null) 
                 {
                     let config = new MatSnackBarConfig();
                     config.duration = this.setAutoHide ? this.autoHide : 0;
@@ -61,16 +58,6 @@ export class LoginComponent implements OnInit
                   
                     this.snackBar.open("Logged in Successfully", this.action ? this.actionButtonLabel : undefined, config);
                     this._Route.navigate(['/Admin/Dashboard']);
-                }
-
-                if (response.userType == "User") 
-                {
-                    let config = new MatSnackBarConfig();
-                    config.duration = this.setAutoHide ? this.autoHide : 0;
-                    config.verticalPosition = this.verticalPosition;
-                  
-                    this.snackBar.open("Logged in Successfully", this.action ? this.actionButtonLabel : undefined, config);
-                    this._Route.navigate(['/User/Dashboard']);
                 }
             });
 

@@ -21,6 +21,7 @@ export class AssignRoleComponent implements OnInit {
     private _roleservice;
     private _assignandremoveservice;
     UserList: UserDropdownModel[];
+    buttonType:any;
     AssignRemoveModel: AssignRemoveModel = new AssignRemoveModel();
     RoleList :RoleModel[];
   

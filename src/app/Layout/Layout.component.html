@@ -1,0 +1,26 @@
+<!-- <div fxLayout="row wrap" fxLayoutAlign="center center" class="layout-wrapper"> 
+  <div fxFlex="80%" fxFlex.lt-md="100%" class="flex-wrapper"> 
+    <router-outlet></router-outlet>
+  </div> 
+</div> -->
+<nav class="navbar navbar-expand navbar-dark bg-dark text-center">
+  <div class="navbar-nav">
+    <a class="nav-item nav-link"[routerLink]="['/Role/Add']"><i class="fa fa-edit fa-fw"></i>Add Role</a>
+    <a class="nav-item nav-link"[routerLink]="['/User/Add']"><i class="fa fa-edit fa-fw"></i>Create User Account</a>
+    <a class="nav-item nav-link"[routerLink]="['/Article/Add']"><i class="fa fa-edit fa-fw"></i>Article</a>
+    <a class="nav-item nav-link"[routerLink]="['/Affiliate/Add']"><i class="fa fa-edit fa-fw"></i>Affiliate</a>
+    <a class="nav-item nav-link"[routerLink]="['/YoutubeVideos/Add']"><i class="fa fa-edit fa-fw"></i>Youtube Videos</a>
+    <a class="nav-item nav-link"[routerLink]="['/LiveSession/Add']"><i class="fa fa-edit fa-fw"></i>Live Session</a>
+    <a class="nav-item nav-link"[routerLink]="['/Donate/Add']"><i class="fa fa-edit fa-fw"></i>Donate</a>
+    <a class="nav-item nav-link"[routerLink]="['/AdminLogout']"><i class="fa fa-edit fa-fw"></i>Logout</a>
+  </div>
+</nav>
+
+<div class="jumbotron">
+  <router-outlet></router-outlet>
+</div>
+
+
+
+
+

@@ -9,6 +9,7 @@ import {
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { LoaderService } from './services/loader.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +17,7 @@ import { LoaderService } from './services/loader.service';
 export class LoaderInterceptorService implements HttpInterceptor {
   private requests: HttpRequest<any>[] = [];
   data: any;
-  constructor(private loader: LoaderService) {}
+  constructor(private loader: LoaderService, private router: Router) {}
 
   removeRequest(req: HttpRequest<any>) {
     const i = this.requests.indexOf(req);
@@ -35,12 +36,13 @@ export class LoaderInterceptorService implements HttpInterceptor {
     this.data = JSON.parse(localStorage.getItem('UserDetails'));
     if(this.data==null)
     {
-      
+      this.router.navigate(["/Login"]);
     }
     else{
       headers = headers.append('Authorization', 'Bearer ' + `${this.data.token}`);
       req = req.clone({headers});
     }
+    console.log(this.data);
     this.requests.push(req);
     this.loader.isLoading.next(true);
     return new Observable(((observer) => {

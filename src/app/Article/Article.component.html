@@ -1,0 +1,55 @@
+<!-- Main Toolbar of an App -->  
+<mat-toolbar color="accent">  
+  <span>Add/Edit/Update Article</span>  
+  <span class="demo-toolbar"></span>  
+</mat-toolbar>  
+
+<!-- Card container that binds all togather -->  
+<mat-card>  
+  <!-- Title of an Card -->  
+  <mat-card-title>  
+      Artical
+  </mat-card-title>  
+
+  <!-- Actual content starts from here -->  
+  <mat-card-content>  
+      <form [formGroup]="articleForm" (ngSubmit)="submitForm(articleForm.value)">  
+          <table>  
+              <tr>  
+                  <td>  
+                      <mat-form-field class="demo-full-width">  
+                          <input formControlName="ArticleTitle" autocomplete="off" matInput placeholder="Article Title">  
+                      </mat-form-field>  
+                      <mat-error>  
+                          <span *ngIf="!articleForm.get('ArticleTitle').valid && articleForm.get('ArticleTitle').touched">Please enter Article Title !!!</span>  
+                      </mat-error>  
+                  </td>  
+                  <td colspan="2">  
+                      <mat-form-field class="demo-full-width">  
+                          <textarea formControlName="ArticleDescription" autocomplete="off" matInput placeholder="ArticleDescription" matTextareaAutosize></textarea>  
+                      </mat-form-field>  
+                      <mat-error>  
+                          <span *ngIf="!articleForm.get('ArticleDescription').valid && articleForm.get('ArticleDescription').touched">Please enter proper Article Description !!!</span>  
+                      </mat-error>  
+                  </td>  
+              </tr>  
+                 
+              <tr>  
+                <td>  
+                  <mat-slide-toggle [(ngModel)]="IsActive" formControlName="IsActive" (change)="onChange($event)">Status</mat-slide-toggle>  
+              </td>  
+                  <td>  
+                      <button mat-raised-button color="primary" type="submit" class="btn btn-info" [disabled]="!articleForm.valid">Submit</button>  
+                  </td>  
+                  <td>  
+                    <button mat-raised-button color="accent" type="submit" class="btn btn-info" [routerLink]="['/Article/All']">View All Articles</button>  
+                </td> 
+              </tr>  
+              <tr>  
+                  <td>
+                  </td>  
+              </tr>  
+          </table>  
+      </form>  
+  </mat-card-content>  
+</mat-card> 

@@ -19,16 +19,12 @@ export class AssignandRemoveRoleService {
   username: any;
 
   constructor(private http: HttpClient) {
-    this.data = JSON.parse(localStorage.getItem('AdminUser'));
-    this.token = this.data.token;
   }
 
   // Get All Users
   public GetAllAssignedRoles() {
     let apiUrl = environment.apiEndpoint + "/api/AssignRoles/";
-    let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    headers = headers.append('Authorization', 'Bearer ' + `${this.token}`);
-    return this.http.get<AssignRolesViewModel[]>(apiUrl, { headers: headers }).pipe(tap(data => data),
+    return this.http.get<AssignRolesViewModel[]>(apiUrl).pipe(tap(data => data),
       catchError(this.handleError)
     );
   }
@@ -38,9 +34,7 @@ export class AssignandRemoveRoleService {
   // AssignRole
   public AssignRole(assignmodel: AssignRemoveModel) {
     let apiUrl = environment.apiEndpoint + "/api/AssignRoles/";
-    let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    headers = headers.append('Authorization', 'Bearer ' + `${this.token}`);
-    return this.http.post<any>(apiUrl, assignmodel, { headers: headers })
+    return this.http.post<any>(apiUrl, assignmodel)
       .pipe(
         catchError(this.handleError)
       );
@@ -49,9 +43,7 @@ export class AssignandRemoveRoleService {
   // RemoveRole
   public RemoveRole(assignmodel: AssignRemoveModel) {
     let apiUrl = environment.apiEndpoint + "/api/RemoveRole/";
-    let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    headers = headers.append('Authorization', 'Bearer ' + `${this.token}`);
-    return this.http.post<any>(apiUrl, assignmodel, { headers: headers })
+    return this.http.post<any>(apiUrl, AssignRolesViewModel)
       .pipe(
         catchError(this.handleError)
       );
