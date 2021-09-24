@@ -19,17 +19,16 @@ export class UserService
     username: any;
 
     constructor(private http: HttpClient) {
-        this.data = JSON.parse(localStorage.getItem('AdminUser'));
+        this.data = JSON.parse(localStorage.getItem('UserDetails'));
         this.token = this.data.token;
     }
 
     // Save User
     public SaveUser(usermodel: UserModel)
     {
-        console.log(JSON.stringify(usermodel));
         let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
         headers = headers.append('Authorization', 'Bearer ' + `${this.token}`);
-        return this.http.post<any>(this.apiUrl, usermodel, { headers: headers })
+        return this.http.post<any>(environment.apiEndpoint + "/api/Auth/Register", usermodel, { headers: headers })
             .pipe(
                 catchError(this.handleError)
             );
@@ -37,7 +36,8 @@ export class UserService
 
     // Update User
     public UpdateUser(usermodel: UserModel) {
-        var putUrl = this.apiUrl + usermodel.UserId;
+        console.log(usermodel);
+        var putUrl = this.apiUrl + usermodel.guid;
         let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
         headers = headers.append('Authorization', 'Bearer ' + `${this.token}`);
         return this.http.put<any>(putUrl, usermodel, { headers: headers })

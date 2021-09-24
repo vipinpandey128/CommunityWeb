@@ -42,7 +42,6 @@ export class LoaderInterceptorService implements HttpInterceptor {
       headers = headers.append('Authorization', 'Bearer ' + `${this.data.token}`);
       req = req.clone({headers});
     }
-    console.log(this.data);
     this.requests.push(req);
     this.loader.isLoading.next(true);
     return new Observable(((observer) => {

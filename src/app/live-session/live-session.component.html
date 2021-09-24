@@ -1,1 +1,166 @@
-<p>live-session works!</p>
+<div class="container">
+    <div class="row">
+    <div class="col-md-12"> 
+      <mat-card>  
+        <mat-card-title class="text-center">  
+            Live Session Form
+        </mat-card-title>  
+        <mat-card-content>  
+            <form [formGroup]="liveSessionFrom" (ngSubmit)="submitForm(liveSessionFrom.value)">  
+                <table>  
+                    <tr>  
+                        <td> <mat-form-field class="demo-full-width">  
+                            <input formControlName="title" name="title" autocomplete="off" matInput placeholder="Session Title"
+                            id="title" >  
+                        </mat-form-field>  
+                        <mat-error>  
+                            <span *ngIf="!liveSessionFrom.get('title').valid && liveSessionFrom.get('title').touched">Please enter youtube title !!!</span>  
+                        </mat-error> 
+                        </td>  
+                        <td colspan="2">  
+                            <mat-form-field class="demo-full-width">  
+                                <textarea formControlName="organisor"  name="organisor" id="organisor" autocomplete="off" matInput placeholder="Session Organisor" matTextareaAutosize></textarea>  
+                            </mat-form-field>  
+                            <mat-error>  
+                                <span *ngIf="!liveSessionFrom.get('organisor').valid && liveSessionFrom.get('organisor').touched">Please enter Organisor !!!</span>  
+                            </mat-error>  
+                        </td>
+                    </tr>  
+                    <tr>  
+                        <td> <mat-form-field class="demo-full-width">  
+                            <input formControlName="guest" name="guest" autocomplete="off" matInput placeholder="Gruest"
+                            id="guest" >  
+                        </mat-form-field>  
+                        <mat-error>  
+                            <span *ngIf="!liveSessionFrom.get('guest').valid && liveSessionFrom.get('guest').touched">Please enter Guest !!!</span>  
+                        </mat-error> 
+                        </td>  
+                        <td colspan="2">  
+                            <mat-form-field class="demo-full-width">  
+                                <input formControlName="sessionDate" type="date" name="sessionDate" id="sessionDate" autocomplete="off" matInput placeholder="Session Date" matTextareaAutosize/>  
+                            </mat-form-field>  
+                            <mat-error>  
+                                <span *ngIf="!liveSessionFrom.get('sessionDate').valid && liveSessionFrom.get('sessionDate').touched">Please enter proper Date !!!</span>  
+                            </mat-error>  
+                        </td>
+                        <td colspan="2">  
+                          <mat-form-field class="demo-full-width">  
+                              <input formControlName="sessionTime" type="time" name="sessionTime" id="sessionTime" autocomplete="off" matInput placeholder="Session Time" matTextareaAutosize/>
+                          </mat-form-field>  
+                          <mat-error>  
+                              <span *ngIf="!liveSessionFrom.get('sessionTime').valid && liveSessionFrom.get('sessionTime').touched">Please enter proper Time !!!</span>  
+                          </mat-error>  
+                      </td>
+                    </tr>  
+                       
+                    <tr>  
+                      <td>  
+                        <mat-form-field class="demo-full-width">  
+                            <input name="youtubeLink" id="youtubeLink" autocomplete="off" matInput placeholder="Youtube Link"
+                            formControlName="youtubeLink" id="youtubeLink" >  
+                        </mat-form-field>  
+                        <mat-error>  
+                            <span *ngIf="!liveSessionFrom.get('youtubeLink').valid && liveSessionFrom.get('youtubeLink').touched">Please enter youtube Link !!!</span>  
+                        </mat-error> 
+                       
+                    </td>  
+                    <td> <mat-slide-toggle formControlName="isActive" name="isActive">Status</mat-slide-toggle>  </td>
+                        <td>  
+                            <button mat-raised-button color="primary" type="submit" [disabled]="!liveSessionFrom.valid">Submit</button>  
+                        </td>  
+                        <td>  
+                          
+                      </td> 
+                    </tr>  
+                  
+                    <tr>  
+                        <td>
+                          
+                        </td>  
+                    </tr>  
+                </table>  
+            </form>  
+        </mat-card-content>  
+      </mat-card> 
+    </div>
+    </div>
+    </div>
+    <br>
+    <h4 class="text-center">Live Session Data</h4>
+    <hr>
+    <div class="container">
+      <div class="row">
+        <div class="example-header">
+          <div class="row">
+            <div class="col-md-6 col-sm-6">
+              <mat-form-field style="width: 50%;">
+                <input matInput (keyup)="applyFilter($event.target.value)" width="50%" placeholder="Filter">
+              </mat-form-field>
+            </div>
+          
+          </div>
+          
+        </div>
+        <div class="col-md-12">
+          <div class="mat-elevation-z8">
+            <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+      
+              <ng-container matColumnDef="liveSessionId">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
+                <td mat-cell *matCellDef="let element"> {{element.liveSessionId}} </td>
+              </ng-container>
+              
+              <ng-container matColumnDef="title">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Title </th>
+                <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+              </ng-container>
+              <ng-container matColumnDef="organisor">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Organisor </th>
+                <td mat-cell *matCellDef="let element"> {{element.organisor}} </td>
+              </ng-container>
+              <ng-container matColumnDef="guest">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Guest </th>
+                <td mat-cell *matCellDef="let element"> {{element.guest}} </td>
+              </ng-container>
+              <ng-container matColumnDef="sessionDate">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
+                <td mat-cell *matCellDef="let element"> {{element.sessionDate | date}} </td>
+              </ng-container>
+              <ng-container matColumnDef="sessionTime">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Time </th>
+                <td mat-cell *matCellDef="let element"> {{element.sessionTime}} </td>
+              </ng-container>
+              <ng-container matColumnDef="youtubeLink">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Youtube URL </th>
+                <td mat-cell *matCellDef="let element"> {{element.youtubeLink}} </td>
+              </ng-container>
+              <ng-container matColumnDef="isActive">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+                <td mat-cell *matCellDef="let element"> {{element.isActive== true ? "Active": "DeActive"}} </td>
+              </ng-container>
+              
+              <ng-container matColumnDef="createdDate">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> CreatedDate </th>
+                <td mat-cell *matCellDef="let element"> {{element.createdDate| date: 'dd/MM/yyyy'}} </td>
+              </ng-container>
+              <ng-container matColumnDef="EditAction">
+                <th mat-header-cell *matHeaderCellDef> Action </th>
+                <td mat-cell *matCellDef="let element"> 
+                  <a mat-icon-button color="accent" [routerLink]="['/Article/Edit/',element.articleId]">
+                    <mat-icon>edit</mat-icon></a> </td>
+              </ng-container>
+              <ng-container matColumnDef="DeleteAction">
+                <th mat-header-cell *matHeaderCellDef> Action </th>
+                <td mat-cell *matCellDef="let element">
+                  <button mat-icon-button color="warn" (click)="Delete(element.articleId)"><mat-icon>delete</mat-icon></button>
+                </td>
+              </ng-container>
+      
+              <tr  color="accent" mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+            <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+          </div>
+        </div>
+      </div>
+    </div>

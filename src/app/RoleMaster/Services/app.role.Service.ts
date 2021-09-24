@@ -36,7 +36,6 @@ export class RoleService {
         let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
         headers = headers.append('Authorization', 'Bearer ' + `${this.token}`);
         headers = headers.append('Access-Control-Allow-Origin','*');
-        console.log(headers);
         return this.http.get<RoleModel[]>(this.apiUrl, { headers: headers }).pipe(tap(data => data),
             catchError(this.handleError)
         );

@@ -1,11 +1,12 @@
 export class UserModel 
 {
-    public UserId: number;
-    public UserName: string;
-    public FullName: string;
-    public EmailId: string;
-    public Contactno: string;
-    public Password: string;
-    public Status: boolean;
+    public id: string;
+    public userName: string;
+    public fullName: string;
+    public emailId: string;
+    public contactno: string;
+    public password: string;
+    public status: boolean;
+    public guid: string;
     
 }

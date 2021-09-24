@@ -3,37 +3,38 @@ import { Injectable } from '@angular/core';
 import { throwError } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { ArticleSaveModel, ArticleViewModel } from '../Models/Article';
+import { Youtube } from '../models/youtube';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ArticleService {
-  private apiUrl = environment.apiEndpoint + "/api/Article/";
+export class YoutubeService {
+  private apiUrl = environment.apiEndpoint + "/api/YoutubeVideo/";
 constructor(private http: HttpClient) { }
 
-  // Get All Article
-  public GetArticleByID(id) {
-    return this.http.get<ArticleSaveModel>(this.apiUrl+id).pipe(tap(data => data),
+  // Get All Youtube
+  public GetYoutubeByID(id) {
+    return this.http.get<Youtube>(this.apiUrl+id).pipe(tap(data => data),
       catchError(this.handleError)
     );
   }
 
-   // Get All Article
-   public GetAllArticles() {
-    return this.http.get<ArticleViewModel[]>(this.apiUrl).pipe(tap(data => data),
+   // Get All Youtube
+   public GetAllYoutubes() {
+    return this.http.get<Youtube[]>(this.apiUrl).pipe(tap(data => data),
       catchError(this.handleError)
     );
   }
 
-  // Get All Article
-  public SaveArticle(article:any) {
-    return this.http.post<any>(this.apiUrl,article,{}).pipe(tap(data => data),
+  // Get All Youtube
+  public SaveYoutube(Youtube:any) {
+    console.log(Youtube);
+    return this.http.post<any>(this.apiUrl,Youtube,{}).pipe(tap(data => data),
       catchError(this.handleError)
     );
   }
-  public UpdateArticle(article:ArticleSaveModel) {
-    return this.http.put<any>(this.apiUrl+article.articleId,article,{}).pipe(tap(data => data),
+  public UpdateYoutube(Youtube:Youtube) {
+    return this.http.put<any>(this.apiUrl+Youtube.youtubeVideoId,Youtube,{}).pipe(tap(data => data),
       catchError(this.handleError)
     );
   }
