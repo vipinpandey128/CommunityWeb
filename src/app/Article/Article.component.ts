@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators ,FormsModule,NgForm } from '@angular/forms';
+import { MatSort, MatPaginator, MatTableDataSource, PageEvent } from '@angular/material';
+import { from } from 'rxjs';
+import { ArticleViewModel } from './Models/Article';
 import { ArticleService } from './service/Article.service';
 
 @Component({
@@ -12,10 +15,31 @@ export class ArticleComponent implements OnInit {
   ArticleTitle:string='';  
   ArticleDescription:string='';  
   IsActive:boolean=true;
+  @ViewChild(MatSort,{static: false}) sort: MatSort;
+  @ViewChild(MatPaginator,{static: false}) paginator: MatPaginator;
+  displayedColumns: string[] = ['articleTitle', 'articleDescription','image','isActive','createdDate','EditAction','DeleteAction'];
+  dataSource: any;
+  AssignModel : ArticleViewModel[]
+  errorMessage: any;
+  offset: any;
   constructor(public fb: FormBuilder, private articleService:ArticleService) { }
 
   ngOnInit() {
     this.reactiveForm();
+    this.showAllArticles();
+  }
+
+  showAllArticles()
+  {
+    this.articleService.GetAllArticles().subscribe(
+      assignModel => 
+      {
+          this.dataSource = new MatTableDataSource(assignModel);
+          this.dataSource.sort = this.sort;
+          this.dataSource.paginator = this.paginator;
+      },
+      error => this.errorMessage = <any>error
+  );
   }
 
 
@@ -24,16 +48,21 @@ export class ArticleComponent implements OnInit {
     this.articleForm = this.fb.group({
       ArticleTitle: [null, Validators.required],
       ArticleDescription: [null, Validators.required],
+      image: [null],
       IsActive: [null, Validators.required]
     });
   }
 
   submitForm() {
-    console.log(this.articleForm.value)
     this.articleService.SaveArticle(this.articleForm.value).subscribe(data=>{
       if(data.isSuccessStatusCode)
       {
-        alert("Data Saved SuccesFully!!!");
+        alert("Data Saved Successfully!!!");
+        this.showAllArticles();
+      }
+      else
+      {
+        alert("Invalid Data!!!");
       }
     })
   }
@@ -45,4 +74,42 @@ export class ArticleComponent implements OnInit {
       this.IsActive = false;  
     }  
   }  
+
+  Delete(id:number)
+{
+
+}
+
+applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+  
+  getNext(event: PageEvent) {
+    this.offset = event.pageSize * event.pageIndex
+    // call your api function here with the offset
+  
+  }
+  DeleteArticle(articleId)
+  {
+
+  }
+  onFileSelect(event) {
+    const reader = new FileReader();
+    
+    if(event.target.files && event.target.files.length) {
+      const [file] = event.target.files;
+      reader.readAsDataURL(file);
+    
+      reader.onload = () => {
+   
+        let imageData = reader.result as string;
+        this.articleForm.get('image').setValue(imageData);
+        console.log(this.articleForm);
+        console.log(this.articleForm.value);
+      };
+   
+    }
+  }
+  
+  
 }

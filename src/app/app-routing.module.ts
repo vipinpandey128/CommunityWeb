@@ -4,14 +4,11 @@ import { Routes, RouterModule } from '@angular/router';
 import { AdminDashboardComponent } from './AdminDashboard/app.AdminDashboardComponent';
 import { AffiliateComponent } from './affiliate/affiliate.component';
 import { AppComponent } from './app.component';
-import { AllArticleComponent } from './Article/AllArticle.component';
 import { ArticleComponent } from './Article/Article.component';
 import { EditArticleComponent } from './Article/EditArticle.component';
-import { AllAssignRoleComponent } from './AssignRole/app.AllAssignRole.component';
-import { AssignRoleComponent } from './AssignRole/app.AssignRole.component';
 import { AdminAuthGuardService } from './AuthGuard/AdminAuthGuardService';
 import { UserAuthGuardService } from './AuthGuard/UserAuthGuardService';
-import { AllUserRegistrationComponent } from './CreateUsers/app.AllUserRegistration.component';
+import { ChangePassComponent } from './change-pass/change-pass.component';
 import { EditUserRegistrationComponent } from './CreateUsers/app.EditUserRegistration.component';
 import { UserRegistrationComponent } from './CreateUsers/app.UserRegistration.component';
 import { DonateComponent } from './donate/donate.component';
@@ -38,7 +35,7 @@ const routes: Routes = [];
         component: LayoutComponent,
         children: [
           { path: 'Add', component: ArticleComponent , canActivate: [AdminAuthGuardService] },
-          // { path: 'Edit/:ArticleId', component: EditArticleComponent , canActivate: [AdminAuthGuardService] },
+          { path: 'Edit/:ArticleId', component: EditArticleComponent , canActivate: [AdminAuthGuardService] },
           // { path: 'All', component: AllArticleComponent , canActivate: [AdminAuthGuardService] }
         ]
       },
@@ -65,8 +62,7 @@ const routes: Routes = [];
         component: LayoutComponent,
         children: [
           { path: 'Add', component: YoutubeVideoComponent , canActivate: [AdminAuthGuardService] },
-          { path: 'Edit/:ArticleId', component: EditArticleComponent , canActivate: [AdminAuthGuardService] },
-          { path: 'All', component: AllArticleComponent , canActivate: [AdminAuthGuardService] }
+          { path: 'Edit/:YoutubeId', component: EditArticleComponent , canActivate: [AdminAuthGuardService] },
         ]
       },
       {
@@ -74,8 +70,7 @@ const routes: Routes = [];
         component: LayoutComponent,
         children: [
           { path: 'Add', component: DonateComponent , canActivate: [AdminAuthGuardService] },
-          { path: 'Edit/:ArticleId', component: EditArticleComponent , canActivate: [AdminAuthGuardService] },
-          { path: 'All', component: AllArticleComponent , canActivate: [AdminAuthGuardService] }
+          { path: 'Edit/:DonateId', component: EditArticleComponent , canActivate: [AdminAuthGuardService] },
         ]
       },
       {
@@ -93,15 +88,7 @@ const routes: Routes = [];
         children: [
           { path: 'Add', component: UserRegistrationComponent , canActivate: [AdminAuthGuardService] },
           { path: 'Edit/:UserId', component: EditUserRegistrationComponent , canActivate: [AdminAuthGuardService] },
-          { path: 'All', component: AllUserRegistrationComponent, canActivate: [AdminAuthGuardService]  }
-        ]
-      },
-      {
-        path: 'Assign',
-        component: LayoutComponent,
-        children: [
-          { path: 'Role', component: AssignRoleComponent , canActivate: [AdminAuthGuardService] },
-          { path: 'AllRole', component: AllAssignRoleComponent , canActivate: [AdminAuthGuardService] }
+          { path: 'ChangesPass', component: ChangePassComponent, canActivate: [AdminAuthGuardService]  }
         ]
       },
       {

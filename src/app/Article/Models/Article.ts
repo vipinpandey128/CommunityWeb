@@ -1,7 +1,9 @@
 export class ArticleSaveModel {
-    public ArticleTitle:string;
-    public ArticleDescription:string;
-    public IsActive:boolean;
+    public articleTitle:string;
+    public articleDescription:string;
+    public isActive:boolean;
+    public articleId:number;
+    public image:string;
 }
 export class ArticleViewModel {
     public ArticleId:number;

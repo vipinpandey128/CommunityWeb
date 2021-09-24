@@ -13,12 +13,9 @@ import { AppComponent } from './app.component';
 import { RoleComponent } from './RoleMaster/app.Role.component';
 import { AllRoleComponent } from './RoleMaster/app.AllRole.component';
 import { EditRoleComponent } from './RoleMaster/app.EditRole.component';
-import { MatSortModule, MatPaginatorModule, MatFormFieldModule, MatInputModule, MatSnackBar, MatSnackBarConfig, MatSnackBarModule, MatProgressSpinnerModule, MatToolbarModule, MatCardModule, MatSlideToggleModule, MatButtonModule, MatIconModule, MatSidenavModule, MatDividerModule, MatNavList, MatListModule, MatMenuModule } from '@angular/material';
+import { MatSortModule, MatPaginatorModule, MatFormFieldModule, MatInputModule, MatSnackBarModule, MatProgressSpinnerModule, MatToolbarModule, MatCardModule, MatSlideToggleModule, MatButtonModule, MatIconModule, MatSidenavModule, MatDividerModule, MatNavList, MatListModule, MatMenuModule, MatDatepickerModule } from '@angular/material';
 import { UserRegistrationComponent } from './CreateUsers/app.UserRegistration.component';
-import { AllUserRegistrationComponent } from './CreateUsers/app.AllUserRegistration.component';
 import { EditUserRegistrationComponent } from './CreateUsers/app.EditUserRegistration.component';
-import { AssignRoleComponent } from './AssignRole/app.AssignRole.component';
-import { AllAssignRoleComponent } from './AssignRole/app.AllAssignRole.component';
 import { LoginComponent } from './Login/app.LoginComponent';
 import { UserDashboardComponent } from './UserDashboard/app.UserDashboardComponent';
 import { AdminDashboardComponent } from './AdminDashboard/app.AdminDashboardComponent';
@@ -31,7 +28,6 @@ import { LoaderService } from './services/loader.service';
 import { MyLoaderComponent } from './components/my-loader/my-loader.component';
 import { ArticleComponent } from './Article/Article.component';
 import { EditArticleComponent } from './Article/EditArticle.component';
-import { AllArticleComponent } from './Article/AllArticle.component';
 import { LayoutComponent } from './Layout/Layout.component';
 import { SideNavComponent } from './Navigation/Side-Nav/Side-Nav.component';
 import { HeaderComponent } from './Navigation/Header/Header.component';
@@ -39,6 +35,10 @@ import { AffiliateComponent } from './affiliate/affiliate.component';
 import { LiveSessionComponent } from './live-session/live-session.component';
 import { YoutubeVideoComponent } from './youtube-video/youtube-video.component';
 import { DonateComponent } from './donate/donate.component';
+import { ChangePassComponent } from './change-pass/change-pass.component';
+import { UploadComponent } from './upload/upload.component';
+import { MaterialModule } from './Material/Material.module';
+
 
 
 
@@ -49,10 +49,7 @@ import { DonateComponent } from './donate/donate.component';
     AllRoleComponent,
     EditRoleComponent,
     UserRegistrationComponent,
-    AllUserRegistrationComponent,
     EditUserRegistrationComponent,
-    AssignRoleComponent,
-    AllAssignRoleComponent,
     LoginComponent,
     AdminLogoutComponent,
     UserLogoutComponent,
@@ -61,7 +58,6 @@ import { DonateComponent } from './donate/donate.component';
     MyLoaderComponent,
     ArticleComponent,
     EditArticleComponent,
-    AllArticleComponent,
     LayoutComponent,
     SideNavComponent,
     HeaderComponent,
@@ -69,6 +65,8 @@ import { DonateComponent } from './donate/donate.component';
     LiveSessionComponent,
     YoutubeVideoComponent,
     DonateComponent,
+    ChangePassComponent,
+    UploadComponent,
    ],
   imports: [
     BrowserModule,
@@ -78,25 +76,11 @@ import { DonateComponent } from './donate/donate.component';
     AppRoutingModule,
     HttpClientModule,
     BsDatepickerModule.forRoot(),
-    MatTableModule,
-    MatAutocompleteModule,
-    MatSortModule,
-    MatPaginatorModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSnackBarModule,
-    MatProgressSpinnerModule,
-    MatToolbarModule,
-    MatCardModule,
     ReactiveFormsModule,
-    MatSlideToggleModule,
-    MatButtonModule,
-    MatIconModule,
-    MatSidenavModule,
-    MatDividerModule,
-    MatListModule,
     AppRoutingModule,
-    MatMenuModule
+    MaterialModule
+  
+    
   ],
   exports: [BsDatepickerModule],
   providers: [LoaderService,DatePipe, AdminAuthGuardService,UserAuthGuardService,

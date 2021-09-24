@@ -3,37 +3,38 @@ import { Injectable } from '@angular/core';
 import { throwError } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { ArticleSaveModel, ArticleViewModel } from '../Models/Article';
+import { LiveSession } from '../models/livesession';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ArticleService {
-  private apiUrl = environment.apiEndpoint + "/api/Article/";
+export class SessionService {
+  private apiUrl = environment.apiEndpoint + "/api/LiveSession/";
 constructor(private http: HttpClient) { }
 
-  // Get All Article
-  public GetArticleByID(id) {
-    return this.http.get<ArticleSaveModel>(this.apiUrl+id).pipe(tap(data => data),
+  // Get All LiveSession
+  public GetLiveSessionByID(id) {
+    return this.http.get<LiveSession>(this.apiUrl+id).pipe(tap(data => data),
       catchError(this.handleError)
     );
   }
 
-   // Get All Article
-   public GetAllArticles() {
-    return this.http.get<ArticleViewModel[]>(this.apiUrl).pipe(tap(data => data),
+   // Get All LiveSession
+   public GetAllLiveSessions() {
+    return this.http.get<LiveSession[]>(this.apiUrl).pipe(tap(data => data),
       catchError(this.handleError)
     );
   }
 
-  // Get All Article
-  public SaveArticle(article:any) {
-    return this.http.post<any>(this.apiUrl,article,{}).pipe(tap(data => data),
+  // Get All LiveSession
+  public SaveLiveSession(LiveSession:any) {
+    console.log(LiveSession);
+    return this.http.post<any>(this.apiUrl,LiveSession,{}).pipe(tap(data => data),
       catchError(this.handleError)
     );
   }
-  public UpdateArticle(article:ArticleSaveModel) {
-    return this.http.put<any>(this.apiUrl+article.articleId,article,{}).pipe(tap(data => data),
+  public UpdateLiveSession(LiveSession:LiveSession) {
+    return this.http.put<any>(this.apiUrl+LiveSession.liveSessionId,LiveSession,{}).pipe(tap(data => data),
       catchError(this.handleError)
     );
   }

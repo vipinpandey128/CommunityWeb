@@ -6,7 +6,7 @@ import { MatSnackBarVerticalPosition, MatSnackBarHorizontalPosition, MatSnackBar
 
 @Component({
     templateUrl: './app.login.html',
-    styleUrls: [
+    styleUrls: ['./app.LoginComponent.css'
     ]
 })
 
