@@ -1,1 +1,167 @@
-<p>donate works!</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <mat-card>
+        <mat-card-title class="text-center">
+          Donation Link Form
+        </mat-card-title>
+        <mat-card-content>
+          <form [formGroup]="donation" (ngSubmit)="submit()">
+            <table>
+              <tr>
+                <td>
+                  <mat-form-field class="demo-full-width">
+                    <input
+                      formControlName="title"
+                      name="title"
+                      autocomplete="off"
+                      matInput
+                      placeholder="Donation Title"
+                      id="title"
+                    />
+                  </mat-form-field>
+                  <mat-error>
+                    <span
+                      *ngIf="
+                        !donation.get('title').valid &&
+                        donation.get('title').touched
+                      "
+                      >Please enter title !!!</span
+                    >
+                  </mat-error>
+                </td>
+                <td colspan="2">
+                  <mat-form-field class="demo-full-width">
+                    <input
+                      type="text"
+                      formControlName="donationLink"
+                      name="donationLink"
+                      id="donationLink"
+                      autocomplete="off"
+                      matInput
+                      placeholder="Donation Link"
+                      matTextareaAutosize
+                    />
+                  </mat-form-field>
+                  <mat-error>
+                    <span
+                      *ngIf="
+                        !donation.get('donationLink').valid &&
+                        donation.get('donationLink').touched
+                      "
+                      >Please enter donationLink !!!</span
+                    >
+                  </mat-error>
+                </td>
+                <td>
+                  <mat-slide-toggle formControlName="isActive" name="isActive"
+                    >Status</mat-slide-toggle
+                  >
+                </td>
+                <td>
+                  <button
+                    mat-raised-button
+                    color="primary"
+                    type="submit"
+                    [disabled]="!donation.valid"
+                  >
+                    Submit
+                  </button>
+                </td>
+              </tr>
+            </table>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
+
+<h4 class="text-center">Donation Links List</h4>
+<hr />
+<div class="container">
+  <div class="row">
+    <div class="example-header">
+      <div class="row">
+        <div class="col-md-6 col-sm-6">
+          <mat-form-field style="width: 50%">
+            <input
+              matInput
+              (keyup)="applyFilter($event.target.value)"
+              width="50%"
+              placeholder="Filter"
+            />
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="mat-elevation-z8">
+        <table
+          mat-table
+          [dataSource]="dataSource"
+          matSort
+          class="mat-elevation-z8"
+        >
+          <ng-container matColumnDef="donateId">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
+            <td mat-cell *matCellDef="let element">{{ element.donateId }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="title">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Title</th>
+            <td mat-cell *matCellDef="let element">{{ element.title }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="donationLink">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              Donation Link
+            </th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.donationLink }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="isActive">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.isActive == true ? "Active" : "DeActive" }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="createdDate">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              CreatedDate
+            </th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.createdDate | date: "dd/MM/yyyy" }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="DeleteAction">
+            <th mat-header-cell *matHeaderCellDef>Action</th>
+            <td mat-cell *matCellDef="let element">
+              <button
+                mat-icon-button
+                color="warn"
+                (click)="Delete(element.donateId)"
+              >
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+
+          <tr
+            color="accent"
+            mat-header-row
+            *matHeaderRowDef="displayedColumns"
+          ></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+        <mat-paginator
+          [pageSizeOptions]="[5, 10, 20]"
+          showFirstLastButtons
+        ></mat-paginator>
+      </div>
+    </div>
+  </div>
+</div>

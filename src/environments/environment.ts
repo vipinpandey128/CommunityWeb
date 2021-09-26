@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiEndpoint: 'https://localhost:44313'
+  apiEndpoint: 'https://api.interviewask.com'
 };
 
 /*

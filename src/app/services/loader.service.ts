@@ -6,6 +6,17 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class LoaderService {
 
-  public isLoading  = new BehaviorSubject(false);
-  constructor() { }
+  visibility: BehaviorSubject<boolean>;
+
+  constructor() {
+    this.visibility = new BehaviorSubject(false);
+  }
+
+  show() {
+    this.visibility.next(true);
+  }
+
+  hide() {
+    this.visibility.next(false);
+  }
 }

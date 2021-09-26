@@ -11,5 +11,6 @@ import { LoaderService } from './services/loader.service';
             ]
 })
 export class AppComponent{
+  showSpinner: boolean;
   title = 'Community Web';
 }

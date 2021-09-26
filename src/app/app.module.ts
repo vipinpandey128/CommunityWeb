@@ -22,7 +22,6 @@ import { AdminAuthGuardService } from './AuthGuard/AdminAuthGuardService';
 import { UserAuthGuardService } from './AuthGuard/UserAuthGuardService';
 import { LoaderInterceptorService } from './loader-interceptor.service';
 import { LoaderService } from './services/loader.service';
-import { MyLoaderComponent } from './components/my-loader/my-loader.component';
 import { ArticleComponent } from './Article/Article.component';
 import { EditArticleComponent } from './Article/EditArticle.component';
 import { LayoutComponent } from './Layout/Layout.component';
@@ -53,7 +52,6 @@ import { FooterComponent } from './footer/footer.component';
     UserLogoutComponent,
     UserDashboardComponent,
     AdminDashboardComponent,
-    MyLoaderComponent,
     ArticleComponent,
     EditArticleComponent,
     LayoutComponent,
