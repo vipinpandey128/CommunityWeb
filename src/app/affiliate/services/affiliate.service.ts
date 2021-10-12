@@ -28,7 +28,6 @@ constructor(private http: HttpClient) { }
 
   // Get All Affiliate
   public SaveAffiliate(Affiliate:any) {
-    console.log(Affiliate);
     return this.http.post<any>(this.apiUrl,Affiliate,{}).pipe(tap(data => data),
       catchError(this.handleError)
     );

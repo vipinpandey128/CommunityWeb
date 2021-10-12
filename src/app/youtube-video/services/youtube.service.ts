@@ -28,7 +28,6 @@ constructor(private http: HttpClient) { }
 
   // Get All Youtube
   public SaveYoutube(Youtube:any) {
-    console.log(Youtube);
     return this.http.post<any>(this.apiUrl,Youtube,{}).pipe(tap(data => data),
       catchError(this.handleError)
     );

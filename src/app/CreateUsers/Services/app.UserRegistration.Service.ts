@@ -36,7 +36,6 @@ export class UserService
 
     // Update User
     public UpdateUser(usermodel: UserModel) {
-        console.log(usermodel);
         var putUrl = this.apiUrl + usermodel.guid;
         let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
         headers = headers.append('Authorization', 'Bearer ' + `${this.token}`);

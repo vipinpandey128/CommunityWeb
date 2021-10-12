@@ -22,7 +22,6 @@ export class EditArticleComponent implements OnInit {
     let id = this._routeParams.snapshot.params['ArticleId'];
     this.articleService.GetArticleByID(id).subscribe(data=>{
       this.articleModel = data;
-      console.log(data);
     });
     this.reactiveForm();
   }
@@ -43,7 +42,6 @@ export class EditArticleComponent implements OnInit {
   }  
 
   onSubmit() {
-    console.log(this.articleModel);
     this.articleService.UpdateArticle(this.articleModel).subscribe(data=>{
       if(data.isSuccessStatusCode)
       {

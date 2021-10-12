@@ -28,7 +28,8 @@ export class AffiliateComponent implements OnInit {
     this.affiliate = this.formBuilder.group({
       title: [null, Validators.required],
       affiliateURL: [null, Validators.required],
-      isActive: false
+      isActive: false,
+      image: [null],
     });
     this.showAllAffiliates();
   }
@@ -38,7 +39,6 @@ export class AffiliateComponent implements OnInit {
     this.affiliateService.GetAllAffiliates().subscribe(
       assignModel => 
       {
-        console.log(assignModel);
           this.dataSource = new MatTableDataSource(assignModel);
           this.dataSource.sort = this.sort;
           this.dataSource.paginator = this.paginator;
@@ -81,5 +81,20 @@ export class AffiliateComponent implements OnInit {
     this.offset = event.pageSize * event.pageIndex
     // call your api function here with the offset
   
+  }
+
+  onFileSelect(event) {
+    const reader = new FileReader();
+    
+    if(event.target.files && event.target.files.length) {
+      const [file] = event.target.files;
+      reader.readAsDataURL(file);
+    
+      reader.onload = () => {
+        let imageData = reader.result as string;
+        this.affiliate.get('image').setValue(imageData);
+      };
+   
+    }
   }
 }

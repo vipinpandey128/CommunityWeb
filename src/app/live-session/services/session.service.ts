@@ -28,7 +28,6 @@ constructor(private http: HttpClient) { }
 
   // Get All LiveSession
   public SaveLiveSession(LiveSession:any) {
-    console.log(LiveSession);
     return this.http.post<any>(this.apiUrl,LiveSession,{}).pipe(tap(data => data),
       catchError(this.handleError)
     );

@@ -5,11 +5,10 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './Layout.component.html',
   styleUrls: []
 })
-export class LayoutComponent implements OnInit {
+export class LayoutComponent {
+  navbarOpen = false;
 
-  constructor() { }
-
-  ngOnInit(){
+  toggleNavbar() {
+    this.navbarOpen = !this.navbarOpen;
   }
-
 }

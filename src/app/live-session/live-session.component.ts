@@ -35,7 +35,6 @@ export class LiveSessionComponent  implements OnInit {
     this.liveSessionService.GetAllLiveSessions().subscribe(
       assignModel => 
       {
-        console.log(assignModel);
           this.dataSource = new MatTableDataSource(assignModel);
           this.dataSource.sort = this.sort;
           this.dataSource.paginator = this.paginator;

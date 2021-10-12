@@ -35,7 +35,6 @@ constructor(private http: HttpClient) { }
 
   // Get All Donate
   public SaveDonate(Donate:any) {
-    console.log(Donate);
     return this.http.post<any>(this.apiUrl,Donate,{}).pipe(tap(data => data),
       catchError(this.handleError)
     );

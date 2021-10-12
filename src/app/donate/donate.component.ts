@@ -38,7 +38,6 @@ export class DonateComponent implements OnInit {
     this.donationService.GetAllDonates().subscribe(
       assignModel => 
       {
-        console.log(assignModel);
           this.dataSource = new MatTableDataSource(assignModel);
           this.dataSource.sort = this.sort;
           this.dataSource.paginator = this.paginator;

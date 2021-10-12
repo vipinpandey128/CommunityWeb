@@ -29,6 +29,9 @@
               "src/styles.css"
             ],
             "scripts": [
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.js",
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
             ]
           },
           "configurations": {
@@ -96,7 +99,11 @@
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.js",
+              "node_modules/bootstrap/dist/css/bootstrap.js",
+              "node_modules/bootstrap/dist/css/bootstrap.bundle.min.js"
+            ]
           }
         },
         "lint": {

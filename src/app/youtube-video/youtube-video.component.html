@@ -7,28 +7,34 @@
         </mat-card-title>  
         <mat-card-content>  
             <form [formGroup]="youtubeFrom" (ngSubmit)="submitForm()">  
-                <table>  
-                    <tr>  
-                        <td> <mat-form-field class="demo-full-width">  
+              <div class="row">
+                <div class="col-xs-12 col-sm-4 col-md-4">
+                  <div class="form-group">
+                    <label>Article Title</label>
+                      <mat-form-field class="demo-full-width">  
                             <input formControlName="youtubeVideoTitle" name="youtubeVideoTitle" autocomplete="off" matInput placeholder="Video Title"
                             id="youtubeVideoTitle" >  
                         </mat-form-field>  
                         <mat-error>  
                             <span *ngIf="!youtubeFrom.get('youtubeVideoTitle').valid && youtubeFrom.get('youtubeVideoTitle').touched">Please enter youtube title !!!</span>  
                         </mat-error> 
-                        </td>  
-                        <td colspan="2">  
+                      </div>
+                      </div>
+                      <div class="col-xs-12 col-sm-4 col-md-4">
+                        <div class="form-group">
+                          <label>Article Title</label>
                             <mat-form-field class="demo-full-width">  
                                 <textarea formControlName="youtubeAuthor"  name="youtubeAuthor" id="youtubeAuthor" autocomplete="off" matInput placeholder="Youtube Author" matTextareaAutosize></textarea>  
                             </mat-form-field>  
                             <mat-error>  
                                 <span *ngIf="!youtubeFrom.get('youtubeAuthor').valid && youtubeFrom.get('youtubeAuthor').touched">Please enter proper youtube author !!!</span>  
                             </mat-error>  
-                        </td>
-                    </tr>  
+                        </div>
+                        </div>
                        
-                    <tr>  
-                      <td>  
+                        <div class="col-xs-12 col-sm-4 col-md-4">
+                          <div class="form-group">
+                            <label>Article Title</label>
                         <mat-form-field class="demo-full-width">  
                             <input name="youtubeVideoURL" id="youtubeVideoURL" autocomplete="off" matInput placeholder="Youtube VideoURL"
                             formControlName="youtubeVideoURL" id="youtubeVideoURL" >  
@@ -36,21 +42,22 @@
                         <mat-error>  
                             <span *ngIf="!youtubeFrom.get('youtubeVideoURL').valid && youtubeFrom.get('youtubeVideoURL').touched">Please enter youtube URl !!!</span>  
                         </mat-error> 
-                       
-                    </td>  
-                    <td> <mat-slide-toggle formControlName="isActive" name="isActive">Status</mat-slide-toggle>  </td>
-                        <td>  
+                        </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-4">
+                          <div class="form-group">
+                            <label>Article Title</label>
+                     <mat-slide-toggle formControlName="isActive" name="isActive">Status</mat-slide-toggle> 
+                        </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-4">
+                          <div class="form-group">
+                            <label>Article Title</label>
                             <button mat-raised-button color="primary" type="submit" [disabled]="!youtubeFrom.valid">Submit</button>  
-                        </td>  
-                        <td>  
+                         </div>
+                         </div>
                           
-                      </td> 
-                    </tr>  
-                    <tr>  
-                        <td>
-                        </td>  
-                    </tr>  
-                </table>  
+                    </div>
             </form>  
         </mat-card-content>  
       </mat-card> 

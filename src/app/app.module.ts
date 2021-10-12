@@ -36,6 +36,7 @@ import { UploadComponent } from './upload/upload.component';
 import { MaterialModule } from './Material/Material.module';
 import { AboutComponent } from './about/about.component';
 import { FooterComponent } from './footer/footer.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 
 
@@ -77,9 +78,7 @@ import { FooterComponent } from './footer/footer.component';
     ReactiveFormsModule,
     AppRoutingModule,
     MaterialModule,
-
-  
-    
+    NgxSpinnerModule
   ],
   exports: [BsDatepickerModule],
   providers: [LoaderService,DatePipe, AdminAuthGuardService,UserAuthGuardService,

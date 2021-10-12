@@ -1,0 +1,15 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\app",
+    "\\src\\app\\affiliate",
+    "\\src\\app\\Layout",
+    "\\src\\app\\Navigation",
+    "\\src\\app\\Navigation\\Header",
+    "\\src\\app\\Navigation\\Side-Nav",
+    "\\src\\environments"
+  ],
+  "SelectedNode": "\\src\\app\\Layout\\Layout.component.ts",
+  "PreviewInSolutionExplorer": false
+}

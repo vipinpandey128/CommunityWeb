@@ -10,3 +10,13 @@ table {
 .mat-radio-label{margin:0 15px 0 0;}
 .title-center{margin:0 auto;}
 .button-wrapper{margin-top:10px;}
+.mat-slide-toggle{
+margin-top: 20px;
+}
+.button-mar
+{
+ margin-top: 20px !important;
+}
+.form-control{
+    margin-top: 20px !important;
+}

@@ -1,17 +1,36 @@
-<!-- <div fxLayout="row wrap" fxLayoutAlign="center center" class="layout-wrapper"> 
-  <div fxFlex="80%" fxFlex.lt-md="100%" class="flex-wrapper"> 
-    <router-outlet></router-outlet>
-  </div> 
-</div> -->
-<nav class="navbar navbar-expand navbar-dark bg-dark text-center">
+<!--<nav class="navbar navbar-expand navbar-dark bg-dark text-center">
   <div class="navbar-nav">
-    <a class="nav-item nav-link"[routerLink]="['/User/Add']"><i class="fa fa-edit fa-fw"></i>Create User Account</a>
-    <a class="nav-item nav-link"[routerLink]="['/Article/Add']"><i class="fa fa-edit fa-fw"></i>Article</a>
-    <a class="nav-item nav-link"[routerLink]="['/Affiliate/Add']"><i class="fa fa-edit fa-fw"></i>Affiliate</a>
-    <a class="nav-item nav-link"[routerLink]="['/YoutubeVideos/Add']"><i class="fa fa-edit fa-fw"></i>Youtube Videos</a>
-    <a class="nav-item nav-link"[routerLink]="['/LiveSession/Add']"><i class="fa fa-edit fa-fw"></i>Live Session</a>
-    <a class="nav-item nav-link"[routerLink]="['/Donate/Add']"><i class="fa fa-edit fa-fw"></i>Donate</a>
-    <a class="nav-item nav-link"[routerLink]="['/AdminLogout']"><i class="fa fa-edit fa-fw"></i>Logout</a>
+    <li class="nav-item"><a class="nav-item nav-link"[routerLink]="['/User/Add']"><i class="fa fa-edit fa-fw"></i>Create User Account</a></li>
+    <li class="nav-item"><a class="nav-item nav-link"[routerLink]="['/Article/Add']"><i class="fa fa-edit fa-fw"></i>Article</a></li>
+    <li class="nav-item"><a class="nav-item nav-link"[routerLink]="['/Affiliate/Add']"><i class="fa fa-edit fa-fw"></i>Affiliate</a></li>
+    <li class="nav-item"><a class="nav-item nav-link"[routerLink]="['/YoutubeVideos/Add']"><i class="fa fa-edit fa-fw"></i>Youtube Videos</a></li>
+    <li class="nav-item"><a class="nav-item nav-link"[routerLink]="['/LiveSession/Add']"><i class="fa fa-edit fa-fw"></i>Live Session</a></li>
+    <li class="nav-item"><a class="nav-item nav-link"[routerLink]="['/Donate/Add']"><i class="fa fa-edit fa-fw"></i>Donate</a></li>
+    <li class="nav-item"><a class="nav-item nav-link"[routerLink]="['/AdminLogout']"><i class="fa fa-edit fa-fw"></i>Logout</a></li>
+  </div>
+</nav>-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">
+    
+  </a>
+
+  <button class="navbar-toggler" type="button"
+          (click)="toggleNavbar()">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+
+  <div class="collapse navbar-collapse"
+       [ngClass]="{ 'show': navbarOpen }">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item"><a class="nav-item nav-link" routerLinkActive="active-link" [routerLink]="['/User/Add']"><i class="fa fa-edit fa-fw"></i>Create User Account</a></li>
+      <li class="nav-item"><a class="nav-item nav-link" routerLinkActive="active-link" [routerLink]="['/Article/Add']"><i class="fa fa-edit fa-fw"></i>Article</a></li>
+      <li class="nav-item"><a class="nav-item nav-link" routerLinkActive="active-link" [routerLink]="['/Affiliate/Add']"><i class="fa fa-edit fa-fw"></i>Affiliate</a></li>
+      <li class="nav-item"><a class="nav-item nav-link" routerLinkActive="active-link" [routerLink]="['/YoutubeVideos/Add']"><i class="fa fa-edit fa-fw"></i>Youtube Videos</a></li>
+      <li class="nav-item"><a class="nav-item nav-link" routerLinkActive="active-link" [routerLink]="['/LiveSession/Add']"><i class="fa fa-edit fa-fw"></i>Live Session</a></li>
+      <li class="nav-item"><a class="nav-item nav-link" routerLinkActive="active-link" [routerLink]="['/Donate/Add']"><i class="fa fa-edit fa-fw"></i>Donate</a></li>
+      <li class="nav-item"><a class="nav-item nav-link" routerLinkActive="active-link" [routerLink]="['/AdminLogout']"><i class="fa fa-edit fa-fw"></i>Logout</a></li>
+    </ul>
   </div>
 </nav>
 

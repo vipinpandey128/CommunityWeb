@@ -7,77 +7,81 @@
         </mat-card-title>
         <mat-card-content>
           <form [formGroup]="affiliate" (ngSubmit)="submit()">
-            <table>
-              <tr>
-                <td>
-                  <mat-form-field class="demo-full-width">
-                    <input
-                      formControlName="title"
-                      name="title"
-                      autocomplete="off"
-                      matInput
-                      placeholder="Affiliate Title"
-                      id="title"
-                    />
-                  </mat-form-field>
-                  <mat-error>
-                    <span
-                      *ngIf="
+           
+
+               <div class="container">
+                 <div class="row">
+                   <div class="col-xs-12 col-sm-4 col-md-4">
+                     <div class="form-group">
+                       <label>Affiliate Title</label>
+                       <input formControlName="title"
+                              name="title"
+                              autocomplete="off"
+                              class="form-control"
+                              placeholder="Affiliate Title"
+                              id="title" />
+                     <mat-error>
+                       <span *ngIf="
                         !affiliate.get('title').valid &&
                         affiliate.get('title').touched
-                      "
-                      >Please enter title !!!</span
-                    >
-                  </mat-error>
-                </td>
-                <td colspan="2">
-                  <mat-form-field class="demo-full-width">
-                    <input
-                      type="text"
-                      formControlName="affiliateURL"
-                      name="affiliateURL"
-                      id="affiliateURL"
-                      autocomplete="off"
-                      matInput
-                      placeholder="Affiliate Link"
-                      matTextareaAutosize
-                    />
-                  </mat-form-field>
-                  <mat-error>
-                    <span
-                      *ngIf="
+                      ">Please enter title !!!</span>
+                     </mat-error>
+                    </div>
+                   </div>
+
+                   <div class="col-xs-12 col-sm-4 col-md-4">
+                    <div class="form-group">
+                      <label>Affiliate Link</label>
+                       <input type="text"
+                              type="url"
+                              formControlName="affiliateURL"
+                              name="affiliateURL"
+                              id="affiliateURL"
+                              autocomplete="off"
+                              class="form-control"
+                              placeholder="Affiliate Link"
+                              matTextareaAutosize />
+                    
+                     <mat-error>
+                       <span *ngIf="
                         !affiliate.get('affiliateURL').valid &&
                         affiliate.get('affiliateURL').touched
-                      "
-                      >Please enter Affiliate Link !!!</span
-                    >
-                  </mat-error>
-                </td>
-                <td>
-                  <mat-slide-toggle formControlName="isActive" name="isActive"
-                    >Status</mat-slide-toggle
-                  >
-                </td>
-                <td>
-                  <button
-                    mat-raised-button
-                    color="primary"
-                    type="submit"
-                    [disabled]="!affiliate.valid"
-                  >
-                    Submit
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td></td>
-              </tr>
+                      ">Please enter Affiliate Link !!!</span>
+                     </mat-error>
+                   </div>
+                </div>
+                
+                <div class="col-xs-12 col-sm-4 col-md-4">
+                  <div class="form-group">
+                    <label>Upload Pic</label>
+                    <input
+                    type="file" class="form-control"
+                    name="profile"
+                    (change)="onFileSelect($event)"
+                    accept=".png, .jpg, .jpeg"
+                  />
+                  </div>
+                </div>
+                   <div class="col-xs-12 col-sm-2 col-md-2">
+                     <mat-slide-toggle formControlName="isActive" name="isActive">Status</mat-slide-toggle>
+                   </div>
 
-              <tr>
-                <td></td>
-              </tr>
-            </table>
+                   <div class="col-xs-12 col-sm-2 col-md-1">
+                     <button mat-raised-button
+                             color="primary"
+                             type="submit"
+                             class="button-mar"
+                             [disabled]="!affiliate.valid">
+                       Submit
+                     </button>
+                   </div>
+                 </div>
+               </div>
+
+
+           
           </form>
+         
         </mat-card-content>
       </mat-card>
     </div>
@@ -86,59 +90,59 @@
 
 
 <h4 class="text-center">Affiliate Links List</h4>
-    <hr>
-    <div class="container">
+<hr>
+<div class="container">
+  <div class="row">
+    <div class="example-header">
       <div class="row">
-        <div class="example-header">
-          <div class="row">
-            <div class="col-md-6 col-sm-6">
-              <mat-form-field style="width: 50%;">
-                <input matInput (keyup)="applyFilter($event.target.value)" width="50%" placeholder="Filter">
-              </mat-form-field>
-            </div>
-          
-          </div>
-          
+        <div class="col-md-6 col-sm-6">
+          <mat-form-field style="width: 50%;">
+            <input matInput (keyup)="applyFilter($event.target.value)" width="50%" placeholder="Filter">
+          </mat-form-field>
         </div>
-        <div class="col-md-12">
-          <div class="mat-elevation-z8">
-            <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
-      
-              <ng-container matColumnDef="affiliateId">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
-                <td mat-cell *matCellDef="let element"> {{element.affiliateId}} </td>
-              </ng-container>
-              
-              <ng-container matColumnDef="title">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Title </th>
-                <td mat-cell *matCellDef="let element"> {{element.title}} </td>
-              </ng-container>
-              <ng-container matColumnDef="affiliateURL">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Affiliate URL </th>
-                <td mat-cell *matCellDef="let element"> {{element.affiliateURL}} </td>
-              </ng-container>
-              <ng-container matColumnDef="isActive">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
-                <td mat-cell *matCellDef="let element"> {{element.isActive== true ? "Active": "DeActive"}} </td>
-              </ng-container>
-              
-              <ng-container matColumnDef="createdDate">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> CreatedDate </th>
-                <td mat-cell *matCellDef="let element"> {{element.createdDate| date: 'dd/MM/yyyy'}} </td>
-              </ng-container>
-              
-              <ng-container matColumnDef="DeleteAction">
-                <th mat-header-cell *matHeaderCellDef> Action </th>
-                <td mat-cell *matCellDef="let element">
-                  <button mat-icon-button color="warn" (click)="Delete(element.affiliateId)"><mat-icon>delete</mat-icon></button>
-                </td>
-              </ng-container>
-      
-              <tr  color="accent" mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-            </table>
-            <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
-          </div>
-        </div>
+
+      </div>
+
+    </div>
+    <div class="col-md-12">
+      <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+          <ng-container matColumnDef="affiliateId">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
+            <td mat-cell *matCellDef="let element"> {{element.affiliateId}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="title">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Title </th>
+            <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+          </ng-container>
+          <ng-container matColumnDef="affiliateURL">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Affiliate URL </th>
+            <td mat-cell *matCellDef="let element"> {{element.affiliateURL}} </td>
+          </ng-container>
+          <ng-container matColumnDef="isActive">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+            <td mat-cell *matCellDef="let element"> {{element.isActive== true ? "Active": "DeActive"}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="createdDate">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> CreatedDate </th>
+            <td mat-cell *matCellDef="let element"> {{element.createdDate| date: 'dd/MM/yyyy'}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="DeleteAction">
+            <th mat-header-cell *matHeaderCellDef> Action </th>
+            <td mat-cell *matCellDef="let element">
+              <button mat-icon-button color="warn" (click)="Delete(element.affiliateId)"><mat-icon>delete</mat-icon></button>
+            </td>
+          </ng-container>
+
+          <tr color="accent" mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
       </div>
     </div>
+  </div>
+</div>

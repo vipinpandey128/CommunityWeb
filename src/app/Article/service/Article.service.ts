@@ -26,12 +26,19 @@ constructor(private http: HttpClient) { }
     );
   }
 
-  // Get All Article
-  public SaveArticle(article:any) {
-    return this.http.post<any>(this.apiUrl,article,{}).pipe(tap(data => data),
+  public DeleteArticle(id:number) {
+    return this.http.delete<any>(this.apiUrl+id).pipe(tap(data => data),
       catchError(this.handleError)
     );
   }
+
+// Get All Article
+public SaveArticle(article:any) {
+  return this.http.post<any>(this.apiUrl,article,{}).pipe(tap(data => data),
+    catchError(this.handleError)
+  );
+}
+
   public UpdateArticle(article:ArticleSaveModel) {
     return this.http.put<any>(this.apiUrl+article.articleId,article,{}).pipe(tap(data => data),
       catchError(this.handleError)

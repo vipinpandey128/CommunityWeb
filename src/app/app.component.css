@@ -1,14 +1,4 @@
 
-.loading-container {
-  display: flex;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0,0,0,0.7);
-  z-index: 5;
-}
 p {
   font-family: Lato;
 }
@@ -22,4 +12,11 @@ mat-sidenav {
 mat-sidenav {
   width: 200px;
   background-color: #f4f4f4;
+}
+mat-progress-spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
 }
