@@ -13,7 +13,7 @@ export class AffiliateComponent implements OnInit {
   affiliate: FormGroup; 
   @ViewChild(MatSort,{static: false}) sort: MatSort;
   @ViewChild(MatPaginator,{static: false}) paginator: MatPaginator;
-  displayedColumns: string[] = ['affiliateId', 'title','affiliateURL','isActive','createdDate','DeleteAction'];
+  displayedColumns: string[] = ['affiliateId', 'title','affiliateURL','image','isActive','createdDate','DeleteAction'];
   dataSource: any;
   AssignModel : Affiliate[]
   errorMessage: any;

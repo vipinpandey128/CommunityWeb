@@ -1,133 +1,221 @@
 <div class="container">
-    <div class="row">
-    <div class="col-md-12"> 
-      <mat-card>  
-        <mat-card-title class="text-center">  
-            Youtube Video Form
-        </mat-card-title>  
-        <mat-card-content>  
-            <form [formGroup]="youtubeFrom" (ngSubmit)="submitForm()">  
-              <div class="row">
-                <div class="col-xs-12 col-sm-4 col-md-4">
-                  <div class="form-group">
-                    <label>Article Title</label>
-                      <mat-form-field class="demo-full-width">  
-                            <input formControlName="youtubeVideoTitle" name="youtubeVideoTitle" autocomplete="off" matInput placeholder="Video Title"
-                            id="youtubeVideoTitle" >  
-                        </mat-form-field>  
-                        <mat-error>  
-                            <span *ngIf="!youtubeFrom.get('youtubeVideoTitle').valid && youtubeFrom.get('youtubeVideoTitle').touched">Please enter youtube title !!!</span>  
-                        </mat-error> 
-                      </div>
-                      </div>
-                      <div class="col-xs-12 col-sm-4 col-md-4">
-                        <div class="form-group">
-                          <label>Article Title</label>
-                            <mat-form-field class="demo-full-width">  
-                                <textarea formControlName="youtubeAuthor"  name="youtubeAuthor" id="youtubeAuthor" autocomplete="off" matInput placeholder="Youtube Author" matTextareaAutosize></textarea>  
-                            </mat-form-field>  
-                            <mat-error>  
-                                <span *ngIf="!youtubeFrom.get('youtubeAuthor').valid && youtubeFrom.get('youtubeAuthor').touched">Please enter proper youtube author !!!</span>  
-                            </mat-error>  
-                        </div>
-                        </div>
-                       
-                        <div class="col-xs-12 col-sm-4 col-md-4">
-                          <div class="form-group">
-                            <label>Article Title</label>
-                        <mat-form-field class="demo-full-width">  
-                            <input name="youtubeVideoURL" id="youtubeVideoURL" autocomplete="off" matInput placeholder="Youtube VideoURL"
-                            formControlName="youtubeVideoURL" id="youtubeVideoURL" >  
-                        </mat-form-field>  
-                        <mat-error>  
-                            <span *ngIf="!youtubeFrom.get('youtubeVideoURL').valid && youtubeFrom.get('youtubeVideoURL').touched">Please enter youtube URl !!!</span>  
-                        </mat-error> 
-                        </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-4 col-md-4">
-                          <div class="form-group">
-                            <label>Article Title</label>
-                     <mat-slide-toggle formControlName="isActive" name="isActive">Status</mat-slide-toggle> 
-                        </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-4 col-md-4">
-                          <div class="form-group">
-                            <label>Article Title</label>
-                            <button mat-raised-button color="primary" type="submit" [disabled]="!youtubeFrom.valid">Submit</button>  
-                         </div>
-                         </div>
-                          
-                    </div>
-            </form>  
-        </mat-card-content>  
-      </mat-card> 
-    </div>
-    </div>
-    </div>
-    
-    <h4 class="text-center">Youtube Videos List</h4>
-    <hr>
-    <div class="container">
-      <div class="row">
-        <div class="example-header">
-          <div class="row">
-            <div class="col-md-6 col-sm-6">
-              <mat-form-field style="width: 50%;">
-                <input matInput (keyup)="applyFilter($event.target.value)" width="50%" placeholder="Filter">
-              </mat-form-field>
+  <div class="row">
+    <div class="col-md-12">
+      <mat-card>
+        <mat-card-title class="text-center">
+          Youtube Video Form
+        </mat-card-title>
+        <mat-card-content>
+          <form [formGroup]="youtubeFrom" (ngSubmit)="submitForm()">
+            <div class="row">
+              <div class="col-xs-12 col-sm-4 col-md-4">
+                <div class="form-group">
+                  <label>Video Title</label>
+
+                  <input
+                    formControlName="youtubeVideoTitle"
+                    name="youtubeVideoTitle"
+                    autocomplete="off"
+                    class="form-control"
+                    placeholder="Video Title"
+                    id="youtubeVideoTitle"
+                  />
+
+                  <mat-error>
+                    <span
+                      *ngIf="
+                        !youtubeFrom.get('youtubeVideoTitle').valid &&
+                        youtubeFrom.get('youtubeVideoTitle').touched
+                      "
+                      >Please enter youtube title !!!</span
+                    >
+                  </mat-error>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-4 col-md-4">
+                <div class="form-group">
+                  <label>Youtube Author</label>
+
+                  <textarea
+                    formControlName="youtubeAuthor"
+                    name="youtubeAuthor"
+                    id="youtubeAuthor"
+                    autocomplete="off"
+                    class="form-control"
+                    placeholder="Youtube Author"
+                    matTextareaAutosize
+                  ></textarea>
+
+                  <mat-error>
+                    <span
+                      *ngIf="
+                        !youtubeFrom.get('youtubeAuthor').valid &&
+                        youtubeFrom.get('youtubeAuthor').touched
+                      "
+                      >Please enter proper youtube author !!!</span
+                    >
+                  </mat-error>
+                </div>
+              </div>
+
+              <div class="col-xs-12 col-sm-4 col-md-4">
+                <div class="form-group">
+                  <label>Video URL</label>
+                  <input
+                    name="youtubeVideoURL"
+                    id="youtubeVideoURL"
+                    autocomplete="off"
+                    class="form-control"
+                    placeholder="Youtube VideoURL"
+                    formControlName="youtubeVideoURL"
+                    id="youtubeVideoURL"
+                  />
+                  <mat-error>
+                    <span
+                      *ngIf="
+                        !youtubeFrom.get('youtubeVideoURL').valid &&
+                        youtubeFrom.get('youtubeVideoURL').touched
+                      "
+                      >Please enter youtube URl !!!</span
+                    >
+                  </mat-error>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-4 col-md-4">
+                <div class="form-group">
+                  <mat-slide-toggle formControlName="isActive" name="isActive"
+                    >Status</mat-slide-toggle
+                  >
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-4 col-md-4">
+                <div class="form-group">
+                  <button
+                    mat-raised-button
+                    color="primary"
+                    type="submit"
+                    class="button-mar"
+                    [disabled]="!youtubeFrom.valid"
+                  >
+                    Submit
+                  </button>
+                </div>
+              </div>
             </div>
-          
-          </div>
-          
-        </div>
-        <div class="col-md-12">
-          <div class="mat-elevation-z8">
-            <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
-      
-              <ng-container matColumnDef="youtubeVideoId">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Youtube Id </th>
-                <td mat-cell *matCellDef="let element"> {{element.youtubeVideoId}} </td>
-              </ng-container>
-              
-              <ng-container matColumnDef="youtubeVideoTitle">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Title </th>
-                <td mat-cell *matCellDef="let element"> {{element.youtubeVideoTitle}} </td>
-              </ng-container>
-              <ng-container matColumnDef="youtubeAuthor">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Author </th>
-                <td mat-cell *matCellDef="let element"> {{element.youtubeAuthor}} </td>
-              </ng-container>
-              <ng-container matColumnDef="youtubeVideoURL">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Youtube URL </th>
-                <td mat-cell *matCellDef="let element"> {{element.youtubeVideoURL}} </td>
-              </ng-container>
-              <ng-container matColumnDef="isActive">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
-                <td mat-cell *matCellDef="let element"> {{element.isActive== true ? "Active": "DeActive"}} </td>
-              </ng-container>
-              
-              <ng-container matColumnDef="createdDate">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> CreatedDate </th>
-                <td mat-cell *matCellDef="let element"> {{element.createdDate| date: 'dd/MM/yyyy'}} </td>
-              </ng-container>
-              <ng-container matColumnDef="EditAction">
-                <th mat-header-cell *matHeaderCellDef> Action </th>
-                <td mat-cell *matCellDef="let element"> 
-                  <a mat-icon-button color="accent" [routerLink]="['/Article/Edit/',element.articleId]">
-                    <mat-icon>edit</mat-icon></a> </td>
-              </ng-container>
-              <ng-container matColumnDef="DeleteAction">
-                <th mat-header-cell *matHeaderCellDef> Action </th>
-                <td mat-cell *matCellDef="let element">
-                  <button mat-icon-button color="warn" (click)="Delete(element.articleId)"><mat-icon>delete</mat-icon></button>
-                </td>
-              </ng-container>
-      
-              <tr  color="accent" mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-            </table>
-            <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
-          </div>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
+
+<h4 class="text-center">Youtube Videos List</h4>
+<hr />
+<div class="container">
+  <div class="row">
+    <div class="example-header">
+      <div class="row">
+        <div class="col-md-6 col-sm-6">
+          <mat-form-field style="width: 50%">
+            <input
+              matInput
+              (keyup)="applyFilter($event.target.value)"
+              width="50%"
+              placeholder="Filter"
+            />
+          </mat-form-field>
         </div>
       </div>
     </div>
+    <div class="col-md-12">
+      <div class="mat-elevation-z8">
+        <table
+          mat-table
+          [dataSource]="dataSource"
+          matSort
+          class="mat-elevation-z8"
+        >
+          <ng-container matColumnDef="youtubeVideoId">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              Youtube Id
+            </th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.youtubeVideoId }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="youtubeVideoTitle">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Title</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.youtubeVideoTitle }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="youtubeAuthor">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Author</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.youtubeAuthor }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="youtubeVideoURL">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              Youtube URL
+            </th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.youtubeVideoURL }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="isActive">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.isActive == true ? "Active" : "DeActive" }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="createdDate">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              CreatedDate
+            </th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.createdDate | date: "dd/MM/yyyy" }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="EditAction">
+            <th mat-header-cell *matHeaderCellDef>Action</th>
+            <td mat-cell *matCellDef="let element">
+              <a
+                mat-icon-button
+                color="accent"
+                [routerLink]="['/Article/Edit/', element.articleId]"
+              >
+                <mat-icon>edit</mat-icon></a
+              >
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="DeleteAction">
+            <th mat-header-cell *matHeaderCellDef>Action</th>
+            <td mat-cell *matCellDef="let element">
+              <button
+                mat-icon-button
+                color="warn"
+                (click)="Delete(element.articleId)"
+              >
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+
+          <tr
+            color="accent"
+            mat-header-row
+            *matHeaderRowDef="displayedColumns"
+          ></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+        <mat-paginator
+          [pageSizeOptions]="[5, 10, 20]"
+          showFirstLastButtons
+        ></mat-paginator>
+      </div>
+    </div>
+  </div>
+</div>
