@@ -8,9 +8,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { DatePipe } from '@angular/common';
 import { AppComponent } from './app.component';
-import { RoleComponent } from './RoleMaster/app.Role.component';
-import { AllRoleComponent } from './RoleMaster/app.AllRole.component';
-import { EditRoleComponent } from './RoleMaster/app.EditRole.component';
 import { UserRegistrationComponent } from './CreateUsers/app.UserRegistration.component';
 import { EditUserRegistrationComponent } from './CreateUsers/app.EditUserRegistration.component';
 import { LoginComponent } from './Login/app.LoginComponent';
@@ -25,27 +22,21 @@ import { LoaderService } from './services/loader.service';
 import { ArticleComponent } from './Article/Article.component';
 import { EditArticleComponent } from './Article/EditArticle.component';
 import { LayoutComponent } from './Layout/Layout.component';
-import { SideNavComponent } from './Navigation/Side-Nav/Side-Nav.component';
-import { HeaderComponent } from './Navigation/Header/Header.component';
 import { AffiliateComponent } from './affiliate/affiliate.component';
 import { LiveSessionComponent } from './live-session/live-session.component';
 import { YoutubeVideoComponent } from './youtube-video/youtube-video.component';
 import { DonateComponent } from './donate/donate.component';
-import { ChangePassComponent } from './change-pass/change-pass.component';
-import { UploadComponent } from './upload/upload.component';
 import { MaterialModule } from './Material/Material.module';
 import { AboutComponent } from './about/about.component';
 import { FooterComponent } from './footer/footer.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { SocialComponent } from './social/social.component';
 
 
 
 @NgModule({
   declarations: [		
     AppComponent,
-    RoleComponent,
-    AllRoleComponent,
-    EditRoleComponent,
     UserRegistrationComponent,
     EditUserRegistrationComponent,
     LoginComponent,
@@ -56,16 +47,13 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     ArticleComponent,
     EditArticleComponent,
     LayoutComponent,
-    SideNavComponent,
-    HeaderComponent,
     AffiliateComponent,
     LiveSessionComponent,
     YoutubeVideoComponent,
     DonateComponent,
-    ChangePassComponent,
-    UploadComponent,
     AboutComponent,
     FooterComponent,
+    SocialComponent,
    ],
   imports: [
     BrowserModule,

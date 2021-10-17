@@ -41,7 +41,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-3">
                     <label for="name">Contactno</label>
                     <input type="text" class="form-control" name="Contactno" [(ngModel)]="UserModel.contactno"
                         maxlength="10" #refContactno="ngModel" id="Contactno" required>
@@ -51,7 +51,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-3">
                     <label for="name">Password</label>
                     <input type="password" class="form-control" name="Password" [(ngModel)]="UserModel.password"
                         maxlength="50" #refPassword="ngModel" id="Password" required>
@@ -62,9 +62,8 @@
                     </div>
                 </div>
                 <div class="col-md-2">
-                    <label for="name" style="margin-right: 17px;">Status</label>
-                    <input style="margin-top: 26px;" type="checkbox" name="Status" [(ngModel)]="UserModel.status" maxlength="50" #refStatus="ngModel"
-                        id="Status" required>
+                    <mat-slide-toggle name="Status" [(ngModel)]="UserModel.status" maxlength="50" #refStatus="ngModel"
+                    id="Status" required>Status</mat-slide-toggle>
                     <div *ngIf="!refStatus.valid  && (refStatus.dirty || refStatus.touched)" class="alert alert-danger">
                         <div [hidden]="!refStatus.errors.required">
                             Status is required
@@ -72,7 +71,7 @@
                     </div>
                 </div>
                 <div class="col-md-2">
-                    <button type="submit" style="margin-top: 10px" [disabled]="!f.form.valid" class="btn btn-success">Submit</button>
+                    <button type="submit" class="button-mar" [disabled]="!f.form.valid" color="primary" mat-raised-button>Submit</button>
                 </div>
 
             </div>

@@ -16,7 +16,7 @@ export class DonateComponent implements OnInit {
   @ViewChild(MatPaginator,{static: false}) paginator: MatPaginator;
   displayedColumns: string[] = ['donateId', 'title','donationLink','isActive','createdDate','DeleteAction'];
   dataSource: any;
-  AssignModel : Donate[]
+  AssignArray : Donate[] = [];
   errorMessage: any;
   offset: any;
   constructor(
@@ -38,7 +38,8 @@ export class DonateComponent implements OnInit {
     this.donationService.GetAllDonates().subscribe(
       assignModel => 
       {
-          this.dataSource = new MatTableDataSource(assignModel);
+          this.AssignArray.push(assignModel);
+          this.dataSource = new MatTableDataSource(this.AssignArray);
           this.dataSource.sort = this.sort;
           this.dataSource.paginator = this.paginator;
       },
@@ -76,11 +77,4 @@ export class DonateComponent implements OnInit {
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
-  
-  getNext(event: PageEvent) {
-    this.offset = event.pageSize * event.pageIndex
-    // call your api function here with the offset
-  
-  }
-
 }

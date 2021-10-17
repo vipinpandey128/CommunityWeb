@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit
                     config.duration = this.setAutoHide ? this.autoHide : 0;
                     config.verticalPosition = this.verticalPosition;
                   
-                    this.snackBar.open("Invalid Username and Password", this.action ? this.actionButtonLabel : undefined, config);
+                    this.snackBar.open("Invalid Username and Password", "Retry");
 
                     this._Route.navigate(['Login']);
                 }
@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit
                     config.duration = this.setAutoHide ? this.autoHide : 0;
                     config.verticalPosition = this.verticalPosition;
                   
-                    this.snackBar.open("Logged in Successfully", this.action ? this.actionButtonLabel : undefined, config);
+                    this.snackBar.open("Logged in Successfully",  "Ok");
                     this._Route.navigate(['/Admin/Dashboard']);
                 }
             });

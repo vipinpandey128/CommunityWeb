@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "gym": {
+    "WebApp": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/gym",
+            "outputPath": "dist/WebApp",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -54,13 +54,13 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
+                  "maximumWarning": "10mb",
+                  "maximumError": "10mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
+                  "maximumWarning": "10mb",
+                  "maximumError": "10mb"
                 }
               ]
             }
@@ -69,18 +69,19 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "gym:build"
+            "browserTarget": "WebApp:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "gym:build:production"
+              "browserTarget": "WebApp:build:production",
+              "aot": true , "optimization": false
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "gym:build"
+            "browserTarget": "WebApp:build"
           }
         },
         "test": {
@@ -123,11 +124,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "gym:serve"
+            "devServerTarget": "WebApp:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "gym:serve:production"
+              "devServerTarget": "WebApp:serve:production"
             }
           }
         }

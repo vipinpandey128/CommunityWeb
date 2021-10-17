@@ -28,7 +28,7 @@ constructor(private http: HttpClient) { }
 
    // Get All Donate
    public GetAllDonates() {
-    return this.http.get<Donate[]>(this.apiUrl).pipe(tap(data => data),
+    return this.http.get<Donate>(this.apiUrl).pipe(tap(data => data),
       catchError(this.handleError)
     );
   }

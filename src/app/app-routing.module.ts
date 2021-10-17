@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AboutComponent } from './about/about.component';
 import { AdminDashboardComponent } from './AdminDashboard/app.AdminDashboardComponent';
 import { AffiliateComponent } from './affiliate/affiliate.component';
 import { AppComponent } from './app.component';
@@ -8,18 +9,16 @@ import { ArticleComponent } from './Article/Article.component';
 import { EditArticleComponent } from './Article/EditArticle.component';
 import { AdminAuthGuardService } from './AuthGuard/AdminAuthGuardService';
 import { UserAuthGuardService } from './AuthGuard/UserAuthGuardService';
-import { ChangePassComponent } from './change-pass/change-pass.component';
 import { EditUserRegistrationComponent } from './CreateUsers/app.EditUserRegistration.component';
 import { UserRegistrationComponent } from './CreateUsers/app.UserRegistration.component';
 import { DonateComponent } from './donate/donate.component';
+import { FooterComponent } from './footer/footer.component';
 import { LayoutComponent } from './Layout/Layout.component';
 import { LiveSessionComponent } from './live-session/live-session.component';
 import { AdminLogoutComponent } from './Login/app.AdminLogout.Component';
 import { LoginComponent } from './Login/app.LoginComponent';
 import { UserLogoutComponent } from './Login/app.UserLogout.Component';
-import { AllRoleComponent } from './RoleMaster/app.AllRole.component';
-import { EditRoleComponent } from './RoleMaster/app.EditRole.component';
-import { RoleComponent } from './RoleMaster/app.Role.component';
+import { SocialComponent } from './social/social.component';
 import { UserDashboardComponent } from './UserDashboard/app.UserDashboardComponent';
 import { YoutubeVideoComponent } from './youtube-video/youtube-video.component';
 
@@ -30,6 +29,30 @@ const routes: Routes = [];
     CommonModule,
 
     RouterModule.forRoot([
+      {
+        path: 'Footer',
+        component: LayoutComponent,
+        children: [
+          { path: 'Add', component: FooterComponent , canActivate: [AdminAuthGuardService] },
+          // { path: 'All', component: AllArticleComponent , canActivate: [AdminAuthGuardService] }
+        ]
+      },
+      {
+        path: 'AboutUs',
+        component: LayoutComponent,
+        children: [
+          { path: 'Add', component: AboutComponent , canActivate: [AdminAuthGuardService] },
+          // { path: 'All', component: AllArticleComponent , canActivate: [AdminAuthGuardService] }
+        ]
+      },
+      {
+        path: 'Social',
+        component: LayoutComponent,
+        children: [
+          { path: 'Add', component: SocialComponent , canActivate: [AdminAuthGuardService] },
+          // { path: 'All', component: AllArticleComponent , canActivate: [AdminAuthGuardService] }
+        ]
+      },
       {
         path: 'Article',
         component: LayoutComponent,
@@ -73,22 +96,13 @@ const routes: Routes = [];
           { path: 'Edit/:DonateId', component: EditArticleComponent , canActivate: [AdminAuthGuardService] },
         ]
       },
-      {
-        path: 'Role',
-        component: LayoutComponent,
-        children: [
-          { path: 'Add', component: RoleComponent , canActivate: [AdminAuthGuardService] },
-          { path: 'Edit/:RoleID', component: EditRoleComponent , canActivate: [AdminAuthGuardService] },
-          { path: 'All', component: AllRoleComponent , canActivate: [AdminAuthGuardService] }
-        ]
-      },
+      
       {
         path: 'User',
         component: LayoutComponent,
         children: [
           { path: 'Add', component: UserRegistrationComponent , canActivate: [AdminAuthGuardService] },
           { path: 'Edit/:UserId', component: EditUserRegistrationComponent , canActivate: [AdminAuthGuardService] },
-          { path: 'ChangesPass', component: ChangePassComponent, canActivate: [AdminAuthGuardService]  }
         ]
       },
       {

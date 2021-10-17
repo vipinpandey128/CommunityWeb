@@ -7,69 +7,77 @@
         </mat-card-title>
         <mat-card-content>
           <form [formGroup]="donation" (ngSubmit)="submit()">
-            <table>
-              <tr>
-                <td>
-                  <mat-form-field class="demo-full-width">
+            <div class="container">
+              <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-6">
+                  <div class="form-group">
+                    <label>Donation Title</label>
                     <input
                       formControlName="title"
                       name="title"
                       autocomplete="off"
-                      matInput
                       placeholder="Donation Title"
                       id="title"
+                      class="form-control"
                     />
-                  </mat-form-field>
-                  <mat-error>
-                    <span
-                      *ngIf="
-                        !donation.get('title').valid &&
-                        donation.get('title').touched
-                      "
-                      >Please enter title !!!</span
-                    >
-                  </mat-error>
-                </td>
-                <td colspan="2">
-                  <mat-form-field class="demo-full-width">
+
+                    <mat-error>
+                      <span
+                        *ngIf="
+                          !donation.get('title').valid &&
+                          donation.get('title').touched
+                        "
+                        >Please enter title !!!</span
+                      >
+                    </mat-error>
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-6">
+                  <div class="form-group">
+                    <label>Donation Link</label>
                     <input
                       type="text"
                       formControlName="donationLink"
                       name="donationLink"
                       id="donationLink"
                       autocomplete="off"
-                      matInput
+                      class="form-control"
                       placeholder="Donation Link"
-                      matTextareaAutosize
                     />
-                  </mat-form-field>
-                  <mat-error>
-                    <span
-                      *ngIf="
-                        !donation.get('donationLink').valid &&
-                        donation.get('donationLink').touched
-                      "
-                      >Please enter donationLink !!!</span
+
+                    <mat-error>
+                      <span
+                        *ngIf="
+                          !donation.get('donationLink').valid &&
+                          donation.get('donationLink').touched
+                        "
+                        >Please enter donationLink !!!</span
+                      >
+                    </mat-error>
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-2 col-md-2">
+                  <div class="form-group">
+                    <mat-slide-toggle formControlName="isActive" name="isActive"
+                      >Status</mat-slide-toggle
                     >
-                  </mat-error>
-                </td>
-                <td>
-                  <mat-slide-toggle formControlName="isActive" name="isActive"
-                    >Status</mat-slide-toggle
-                  >
-                </td>
-                <td>
-                  <button
-                    mat-raised-button
-                    color="primary"
-                    type="submit"
-                    [disabled]="!donation.valid"
-                  >
-                    Submit
-                  </button>
-                </td>
-              </tr>
-            </table>
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-2 col-md-2">
+                  <div class="form-group">
+                    <button
+                      mat-raised-button
+                      color="primary"
+                      type="submit"
+                      [disabled]="!donation.valid"
+                      class="button-mar"
+                    >
+                      Submit
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </form>
         </mat-card-content>
       </mat-card>

@@ -1,1 +1,170 @@
-<p>about works!</p>
+<div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <mat-card>
+          <mat-card-title class="text-center">
+            AboutUs Form
+          </mat-card-title>
+          <mat-card-content>
+            <form [formGroup]="aboutUsFormGroup" (ngSubmit)="submit()">
+              <div class="container">
+                <div class="row">
+                  <div class="col-xs-12 col-sm-6 col-md-6">
+                    <div class="form-group">
+                      <label>About Title</label>
+                      <input
+                        formControlName="aboutTitle"
+                        name="aboutTitle"
+                        autocomplete="off"
+                        placeholder="About Title"
+                        id="aboutTitle"
+                        class="form-control"
+                      />
+  
+                      <mat-error>
+                        <span
+                          *ngIf="
+                            !aboutUsFormGroup.get('aboutTitle').valid &&
+                            aboutUsFormGroup.get('aboutTitle').touched
+                          "
+                          >Please enter About Title!!!</span
+                        >
+                      </mat-error>
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-6 col-md-6">
+                    <div class="form-group">
+                      <label>About Desc</label>
+                      <input
+                        type="text"
+                        formControlName="aboutDesc"
+                        name="aboutDesc"
+                        id="aboutDesc"
+                        autocomplete="off"
+                        class="form-control"
+                        placeholder="About Desc"
+                      />
+  
+                      <mat-error>
+                        <span
+                          *ngIf="
+                            !aboutUsFormGroup.get('aboutDesc').valid &&
+                            aboutUsFormGroup.get('aboutDesc').touched
+                          "
+                          >Please enter AboutUs Desc !!!</span
+                        >
+                      </mat-error>
+                    </div>
+                  </div>
+
+
+                  <div class="col-xs-12 col-sm-6 col-md-6">
+                    <div class="form-group">
+                      <label>About Image</label>
+                      <input
+                      type="file" class="form-control"
+                      name="aboutImage"
+                      (change)="onFileSelect($event)"
+                      accept=".png, .jpg, .jpeg"
+                    />
+                    </div>
+                  </div>
+
+                  <div class="col-xs-12 col-sm-2 col-md-2">
+                    <div class="form-group">
+                      <mat-slide-toggle formControlName="isActive" name="isActive"
+                        >Status</mat-slide-toggle
+                      >
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-2 col-md-2">
+                    <div class="form-group">
+                      <button
+                        mat-raised-button
+                        color="primary"
+                        type="submit"
+                        [disabled]="!aboutUsFormGroup.valid"
+                        class="button-mar"
+                      >
+                        Submit
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+  
+  <h4 class="text-center">About Us</h4>
+  <hr />
+  <div class="container">
+    <div class="row">
+      <div class="example-header">
+        <div class="row">
+          <div class="col-md-6 col-sm-6">
+            <mat-form-field style="width: 50%">
+              <input
+                matInput
+                (keyup)="applyFilter($event.target.value)"
+                width="50%"
+                placeholder="Filter"
+              />
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="mat-elevation-z8">
+          <table
+            mat-table
+            [dataSource]="dataSource"
+            matSort
+            class="mat-elevation-z8"
+          >
+            <ng-container matColumnDef="aboutId">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
+              <td mat-cell *matCellDef="let element">{{ element.aboutId }}</td>
+            </ng-container>
+  
+            <ng-container matColumnDef="aboutTitle">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>About Title</th>
+              <td mat-cell *matCellDef="let element">{{ element.aboutTitle }}</td>
+            </ng-container>
+  
+            <ng-container matColumnDef="aboutDesc">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                About Desc
+              </th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.aboutDesc }}
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="aboutImage">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                   Image
+                </th>
+                <td mat-cell *matCellDef="let element">
+                  <img src="{{element.aboutImage}}">
+                </td>
+              </ng-container>
+              
+            <tr
+              color="accent"
+              mat-header-row
+              *matHeaderRowDef="displayedColumns"
+            ></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+          </table>
+          <mat-paginator
+            [pageSizeOptions]="[5, 10, 20]"
+            showFirstLastButtons
+          ></mat-paginator>
+        </div>
+      </div>
+    </div>
+  </div>
+  

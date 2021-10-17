@@ -1,1 +1,223 @@
-<p>footer works!</p>
+<div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <mat-card>
+          <mat-card-title class="text-center">
+            Footer Details
+          </mat-card-title>
+          <mat-card-content>
+            <form [formGroup]="footer" (ngSubmit)="submit()">
+              <div class="container">
+                <div class="row">
+                  <div class="col-xs-12 col-sm-6 col-md-6">
+                    <div class="form-group">
+                      <label>Company Name</label>
+                      <input
+                        formControlName="companyName"
+                        name="companyName"
+                        autocomplete="off"
+                        placeholder="Company Name"
+                        id="companyName"
+                        class="form-control"
+                      />
+  
+                      <mat-error>
+                        <span
+                          *ngIf="
+                            !footer.get('companyName').valid &&
+                            footer.get('companyName').touched
+                          "
+                          >Please enter Company Name !!!</span
+                        >
+                      </mat-error>
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-6 col-md-6">
+                    <div class="form-group">
+                      <label>Company Address</label>
+                      <input
+                        type="text"
+                        formControlName="companyAddress"
+                        name="companyAddress"
+                        id="companyAddress"
+                        autocomplete="off"
+                        class="form-control"
+                        placeholder="Company Address"
+                      />
+  
+                      <mat-error>
+                        <span
+                          *ngIf="
+                            !footer.get('companyAddress').valid &&
+                            footer.get('companyAddress').touched
+                          "
+                          >Please enter Company Address !!!</span
+                        >
+                      </mat-error>
+                    </div>
+                  </div>
+
+
+                  <div class="col-xs-12 col-sm-6 col-md-6">
+                    <div class="form-group">
+                      <label>WebSite Name</label>
+                      <input
+                        type="text"
+                        formControlName="webSiteName"
+                        name="webSiteName"
+                        id="webSiteName"
+                        autocomplete="off"
+                        class="form-control"
+                        placeholder="WebSite Name"
+                      />
+  
+                      <mat-error>
+                        <span
+                          *ngIf="
+                            !footer.get('webSiteName').valid &&
+                            footer.get('webSiteName').touched
+                          "
+                          >Please enter WebSite Name !!!</span
+                        >
+                      </mat-error>
+                    </div>
+                  </div>
+
+                  <div class="col-xs-12 col-sm-6 col-md-6">
+                    <div class="form-group">
+                      <label>Email</label>
+                      <input
+                        type="text"
+                        formControlName="email"
+                        name="email"
+                        id="email"
+                        autocomplete="off"
+                        class="form-control"
+                        placeholder="Email"
+                      />
+  
+                      <mat-error>
+                        <span
+                          *ngIf="
+                            !footer.get('email').valid &&
+                            footer.get('email').touched
+                          "
+                          >Please enter Email !!!</span
+                        >
+                      </mat-error>
+                    </div>
+                  </div>
+
+                  <div class="col-xs-12 col-sm-2 col-md-2">
+                    <div class="form-group">
+                      <mat-slide-toggle formControlName="isActive" name="isActive"
+                        >Status</mat-slide-toggle
+                      >
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-2 col-md-2">
+                    <div class="form-group">
+                      <button
+                        mat-raised-button
+                        color="primary"
+                        type="submit"
+                        [disabled]="!footer.valid"
+                        class="button-mar"
+                      >
+                        Submit
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+  
+  <h4 class="text-center">footer Links List</h4>
+  <hr />
+  <div class="container">
+    <div class="row">
+      <div class="example-header">
+        <div class="row">
+          <div class="col-md-6 col-sm-6">
+            <mat-form-field style="width: 50%">
+              <input
+                matInput
+                (keyup)="applyFilter($event.target.value)"
+                width="50%"
+                placeholder="Filter"
+              />
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="mat-elevation-z8">
+          <table
+            mat-table
+            [dataSource]="dataSource"
+            matSort
+            class="mat-elevation-z8"
+          >
+            <ng-container matColumnDef="headerInfoId">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
+              <td mat-cell *matCellDef="let element">{{ element.headerInfoId }}</td>
+            </ng-container>
+  
+            <ng-container matColumnDef="companyName">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Company Name</th>
+              <td mat-cell *matCellDef="let element">{{ element.companyName }}</td>
+            </ng-container>
+  
+            <ng-container matColumnDef="companyAddress">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                Company Address
+              </th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.companyAddress }}
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="email">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                    Email
+                </th>
+                <td mat-cell *matCellDef="let element">
+                  {{ element.email }}
+                </td>
+              </ng-container>
+              <ng-container matColumnDef="mobile">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                    Mobile
+                </th>
+                <td mat-cell *matCellDef="let element">
+                  {{ element.mobile }}
+                </td>
+              </ng-container>
+              <ng-container matColumnDef="webSiteName">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                    WebSite Name
+                </th>
+                <td mat-cell *matCellDef="let element">
+                  {{ element.webSiteName }}
+                </td>
+              </ng-container>
+            <tr
+              color="accent"
+              mat-header-row
+              *matHeaderRowDef="displayedColumns"
+            ></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+          </table>
+          <mat-paginator
+            [pageSizeOptions]="[5, 10, 20]"
+            showFirstLastButtons
+          ></mat-paginator>
+        </div>
+      </div>
+    </div>
+  </div>
+  

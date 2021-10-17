@@ -20,17 +20,16 @@ export class YoutubeVideoComponent  implements OnInit {
   @ViewChild(MatPaginator,{static: false}) paginator: MatPaginator;
   displayedColumns: string[] = ['youtubeVideoId', 'youtubeVideoTitle','youtubeAuthor','youtubeVideoURL','isActive','createdDate','EditAction','DeleteAction'];
   dataSource: any;
-  AssignModel : ArticleViewModel[]
   errorMessage: any;
   offset: any;
   constructor(public fb: FormBuilder, private youtubeService:YoutubeService) { }
 
   ngOnInit() {
     this.reactiveForm();
-    this.showAllArticles();
+    this.showAllYoutube();
   }
 
-  showAllArticles()
+  showAllYoutube()
   {
     this.youtubeService.GetAllYoutubes().subscribe(
       assignModel => 
@@ -59,7 +58,7 @@ export class YoutubeVideoComponent  implements OnInit {
       if(data.isSuccessStatusCode)
       {
         alert("Data Saved Successfully!!!");
-        this.showAllArticles();
+        this.showAllYoutube();
       }
       else{
         alert("Invalid Data!!!");

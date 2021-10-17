@@ -1,31 +1,27 @@
 
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark container">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark container-fluid">
     <a class="navbar-brand" href="#">
-      
     </a>
-  
     <button class="navbar-toggler" type="button"
             (click)="toggleNavbar()">
       <span class="navbar-toggler-icon"></span>
     </button>
-  
-  
     <div class="collapse navbar-collapse"
          [ngClass]="{ 'show': navbarOpen }">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item"><a class="nav-item nav-link" routerLinkActive="active-link" [routerLink]="['/User/Add']"><i class="fa fa-edit fa-fw"></i>Create User Account</a></li>
-        <li class="nav-item"><a class="nav-item nav-link" routerLinkActive="active-link" [routerLink]="['/Article/Add']"><i class="fa fa-edit fa-fw"></i>Article</a></li>
-        <li class="nav-item"><a class="nav-item nav-link" routerLinkActive="active-link" [routerLink]="['/Affiliate/Add']"><i class="fa fa-edit fa-fw"></i>Affiliate</a></li>
-        <li class="nav-item"><a class="nav-item nav-link" routerLinkActive="active-link" [routerLink]="['/YoutubeVideos/Add']"><i class="fa fa-edit fa-fw"></i>Youtube Videos</a></li>
-        <li class="nav-item"><a class="nav-item nav-link" routerLinkActive="active-link" [routerLink]="['/LiveSession/Add']"><i class="fa fa-edit fa-fw"></i>Live Session</a></li>
-        <li class="nav-item"><a class="nav-item nav-link" routerLinkActive="active-link" [routerLink]="['/Donate/Add']"><i class="fa fa-edit fa-fw"></i>Donate</a></li>
-        <li class="nav-item"><a class="nav-item nav-link" routerLinkActive="active-link" [routerLink]="['/AdminLogout']"><i class="fa fa-edit fa-fw"></i>Logout</a></li>
+        <li class="nav-item"><a class="nav-item nav-link" routerLinkActive="active-link" [routerLink]="['/User/Add']">Create User Account</a></li>
+        <li class="nav-item"><a class="nav-item nav-link" routerLinkActive="active-link" [routerLink]="['/Article/Add']">Article</a></li>
+        <li class="nav-item"><a class="nav-item nav-link" routerLinkActive="active-link" [routerLink]="['/Affiliate/Add']">Affiliate</a></li>
+        <li class="nav-item"><a class="nav-item nav-link" routerLinkActive="active-link" [routerLink]="['/YoutubeVideos/Add']">Youtube Videos</a></li>
+        <li class="nav-item"><a class="nav-item nav-link" routerLinkActive="active-link" [routerLink]="['/LiveSession/Add']">Live Session</a></li>
+        <li class="nav-item"><a class="nav-item nav-link" routerLinkActive="active-link" [routerLink]="['/Donate/Add']">Donate</a></li>
+        <li class="nav-item"><a class="nav-item nav-link" routerLinkActive="active-link" [routerLink]="['/Footer/Add']">Footer</a></li>
+        <li class="nav-item"><a class="nav-item nav-link" routerLinkActive="active-link" [routerLink]="['/Social/Add']">Social</a></li>
+        <li class="nav-item"><a class="nav-item nav-link" routerLinkActive="active-link" [routerLink]="['/AboutUs/Add']">AbouUs</a></li>
+        <li class="nav-item"><a class="nav-item nav-link" routerLinkActive="active-link" [routerLink]="['/AdminLogout']">Logout</a></li>
       </ul>
     </div>
   </nav>
- 
-
-
 <div class="jumbotron">
   <router-outlet></router-outlet>
 </div>
